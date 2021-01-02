@@ -25,7 +25,7 @@
     "declarationMap": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "packages/barChart/stories"],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "dist"
