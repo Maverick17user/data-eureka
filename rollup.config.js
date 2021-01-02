@@ -1,14 +1,11 @@
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-typescript2";
 import pkg from "./package.json";
 
-const extensions = [".js", ".jsx", ".ts", ".tsx"];
+// TODO: Change
 const input = "src/index.ts";
-
-const plugins = [
-  typescript({
-    typescript: require("typescript"),
-  }),
-];
 
 export default [
   {
@@ -27,6 +24,11 @@ export default [
       format: "cjs",
       sourcemap: true,
     },
-    plugins,
+    plugins: [
+      peerDepsExternal(), 
+      resolve(), 
+      commonjs(), 
+      typescript()
+    ],
   },
 ];
