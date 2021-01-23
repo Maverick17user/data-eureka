@@ -10,6 +10,6 @@ export const generateBarTestData = () => {
     })
   }
 
-  return { data }
+  return data
 }
   

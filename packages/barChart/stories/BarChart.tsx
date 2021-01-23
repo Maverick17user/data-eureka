@@ -4,6 +4,10 @@ import Line from '../components/Line/Line';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { line, curveMonotoneX } from 'd3-shape';
 import { extent } from 'd3-array';
+import { max, min } from 'd3-array'
+import { isEmpty } from 'lodash';
+
+
 export type BarChartProps = any
 
 /**
@@ -16,38 +20,58 @@ const BarChart: React.FC<BarChartProps> = ({
   ...props
 }) => {
 
-  const xScale = scaleBand()
-      .domain(data.map(d => d.name))
-      .rangeRound([0, width]).padding(0.1)
+  if (!isEmpty(data)) {
 
+    // const xMinValue = min(data, (d) => d.xValue);
+    // const xMaxValue = max(data, (d) => d.xValue);
+  
+    const yMinValue = min(data.map(d => d.yValue));
+    const yMaxValue = max(data.map(d => d.yValue));
+  
+    const xScale = scaleBand()
+      .range([0, width])
+      .domain(data.map(d => d.xValue))
+      .padding(0.1)
+  
     const yScale = scaleLinear()
-      .domain(extent(data, d => d.value))
       .range([height, 0])
-      .nice()
-
+      .domain([yMinValue, yMaxValue])
+    // .nice()
+  
     const lineGenerator = line()
-      .x(d => xScale(d.name))
-      .y(d => yScale(d.value))
-      .curve(curveMonotoneX)
+      .x(d => xScale(d.xValue))
+      .y(d => yScale(d.yValue))
+    // .curve(curveMonotoneX)
 
-  return (
-    <div id="barChart__container">
-      <svg
+    return (
+      <div id="barChart__container">
+        <svg
           className="barChart__svg"
           width={width}
           height={height}
         >
           <g>
-            <XYAxis 
-            
+            {/* <XYAxis
+  
             />
-            <Line 
-            
-            />
+            <Line
+  
+            /> */}
+            {/* {data.map((item, i) => ( */}
+              <path
+                // key={`item-${i}`}
+                d={lineGenerator(data)}
+                className='line'
+                style={{ fill: 'none', strokeWidth: 2, stroke: "green" }}
+              />
+            {/* ))} */}
           </g>
         </svg>
-    </div>
-  )
+      </div>
+    )
+  }
+
+  return <div>kok</div>
 }
 
 export default BarChart
