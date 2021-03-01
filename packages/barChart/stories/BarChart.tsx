@@ -1,11 +1,12 @@
 import React from 'react'
 import XYAxis from '../components/XYAxis/XYAxis';
-import Line from '../components/Line/Line';
+import Line from '../components/AxisLine/AxisLine';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { line, curveMonotoneX } from 'd3-shape';
 import { extent } from 'd3-array';
 import { max, min } from 'd3-array'
 import { isEmpty } from 'lodash';
+import getChartStatus, { ChartStatus } from './helpers/getChartStatus';
 
 
 export type BarChartProps = any
@@ -17,6 +18,8 @@ const BarChart: React.FC<BarChartProps> = ({
   data = [],
   width = 400,
   height = 300,
+  // TODO: Custom loader
+  // TODO: Chart theme or theme configuration
   ...props
 }) => {
 
@@ -37,11 +40,15 @@ const BarChart: React.FC<BarChartProps> = ({
       .range([height, 0])
       .domain([yMinValue, yMaxValue])
     // .nice()
-  
+
     const lineGenerator = line()
       .x(d => xScale(d.xValue))
       .y(d => yScale(d.yValue))
     // .curve(curveMonotoneX)
+
+    const firstYValue: number = data[0].yValue
+    const lastYValue: number = data[data.length - 1].yValue
+    const chartStaus: ChartStatus = getChartStatus(firstYValue, lastYValue)
 
     return (
       <div id="barChart__container">
@@ -51,27 +58,32 @@ const BarChart: React.FC<BarChartProps> = ({
           height={height}
         >
           <g>
-            {/* <XYAxis
-  
+            <AxisLine 
+              lineScale={xScale}
+              ticksAmount={100}
             />
-            <Line
-  
-            /> */}
-            {/* {data.map((item, i) => ( */}
-              <path
-                // key={`item-${i}`}
-                d={lineGenerator(data)}
-                className='line'
-                style={{ fill: 'none', strokeWidth: 2, stroke: "green" }}
-              />
-            {/* ))} */}
+            <AxisLine 
+              lineScale={yScale}
+              ticksAmount={250}
+            />
+            <path
+              d={lineGenerator(data)}
+              className='line'
+              style={{ 
+                fill: 'none', 
+                strokeWidth: 2, 
+                stroke: chartStaus === ChartStatus.Negative
+                  ? "#eb3434"
+                  : "#34eb8f"
+              }}
+            />
           </g>
         </svg>
       </div>
     )
   }
 
-  return <div>kok</div>
+  return <div>Bruh</div>
 }
 
 export default BarChart
