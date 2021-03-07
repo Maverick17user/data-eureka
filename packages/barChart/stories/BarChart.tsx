@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { line, area, curveMonotoneX } from 'd3-shape';
 import { extent } from 'd3-array';
@@ -19,6 +19,7 @@ const BarChart: React.FC<BarChartProps> = ({
   // TODO: Chart theme or theme configuration
   ...props
 }) => {
+  const [ activeIndex, setActiveIndex ] = useState(null);
 
   if (!isEmpty(data)) {
 
@@ -31,7 +32,7 @@ const BarChart: React.FC<BarChartProps> = ({
     const xScale = scaleBand()
       .domain(data.map(d => d.xValue))
       .range([0, width])
-      // .padding(0.1)
+    // .padding(0.1)
 
     const yScale = scaleLinear()
       .domain([yMinValue, yMaxValue])
@@ -39,12 +40,11 @@ const BarChart: React.FC<BarChartProps> = ({
     // .nice()
 
     const getX = scaleBand()
-      .domain(data.map(d => d.xValue)) 
+      .domain(data.map(d => d.xValue))
       .range([0, width]);
 
     const getY = scaleLinear()
       .domain([yMinValue, yMaxValue])
-      // .domain(data.map(d => d.yValue))
       .range([height, 0]);
 
     const lineGenerator = line()
@@ -66,11 +66,21 @@ const BarChart: React.FC<BarChartProps> = ({
       ? "#eb3434"
       : "#34eb8f"
 
-    const margins = {
-      top: 20,
-      right: 20,
-      bottom: 20,
-      left: 20,
+    // const margins = {
+    //   top: 20,
+    //   right: 20,
+    //   bottom: 20,
+    //   left: 20,
+    // };
+
+    const handleMouseMove = (e) => {
+      const x = e.nativeEvent.offsetX;
+      const index = Math.floor(x / getX.step());
+      setActiveIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+      setActiveIndex(null);
     };
 
     return (
@@ -79,6 +89,8 @@ const BarChart: React.FC<BarChartProps> = ({
           className="barChart__svg"
           width={width}
           height={height + 25}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
           <AxisLine orientation={AxisOrientation.X} getX={getX} getY={getY} />
           <AxisLine orientation={AxisOrientation.Y} getY={getY} />
@@ -87,17 +99,37 @@ const BarChart: React.FC<BarChartProps> = ({
             opacity={0.2}
             fill={chartColorStyle}
           />
-          {/* <g> */}
-            <path
-              d={lineGenerator}
-              className='line'
-              style={{
-                fill: 'none',
-                strokeWidth: 2,
-                stroke: chartColorStyle,
-              }}
-            />
-          {/* </g> */}
+          <path
+            d={lineGenerator}
+            className='line'
+            style={{
+              fill: 'none',
+              strokeWidth: 2,
+              stroke: chartColorStyle,
+            }}
+          />
+          {/* TODO: Id gen-n */}
+          {data.map((item, index) => (
+            <g key={index}>
+              <circle
+                cx={getX(item.xValue) + getX.bandwidth() / 2}
+                cy={getY(item.yValue)}
+                r={index === activeIndex ? 6 : 4}
+                fill="#7cb5ec"
+                strokeWidth={index === activeIndex ? 2 : 0}
+                stroke="#fff"
+                style={{ transition: `ease-out .1s` }}
+              />
+              <text
+                fill="#666"
+                x={getX(item.xValue) + getX.bandwidth() / 2}
+                y={getY(item.yValue) - 10}
+                textAnchor="middle"
+              >
+                {item.yValue}
+              </text>
+            </g>
+          ))}
         </svg>
       </div>
     )
