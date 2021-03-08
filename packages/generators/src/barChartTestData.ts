@@ -12,4 +12,10 @@ export const generateBarTestData = () => {
 
   return data
 }
-  
+
+// console.log('📕: ');
+// console.log('📙: ');
+// console.log('📗: ');
+// console.log('📘: ');
+// console.log('📓: ');
+// console.log('📔: ');

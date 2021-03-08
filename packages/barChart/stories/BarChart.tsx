@@ -19,7 +19,13 @@ const BarChart: React.FC<BarChartProps> = ({
   // TODO: Chart theme or theme configuration
   ...props
 }) => {
-  const [ activeIndex, setActiveIndex ] = useState(null);
+  const INITIAL_INTERVAL_STATE_VALUE = {
+    startValue: null,
+    endValue: null,
+  }
+
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [valueInterval, setValueInterval] = useState(INITIAL_INTERVAL_STATE_VALUE);
 
   if (!isEmpty(data)) {
 
@@ -48,19 +54,26 @@ const BarChart: React.FC<BarChartProps> = ({
       .range([height, 0]);
 
     const lineGenerator = line()
-      .x(d => xScale(d.xValue) + getX.bandwidth() / 2)
-      .y(d => yScale(d.yValue))
+      .x(d => getX(d.xValue) + getX.bandwidth() / 2)
+      .y(d => getY(d.yValue))
       .curve(curveMonotoneX)(data)
 
     const areaPathGenerator = area()
       .x(d => getX(d.xValue) + getX.bandwidth() / 2)
       .y0(d => getY(d.yValue))
-      .y1(() => getY(0))
+      .y1(() => getY(yMinValue))
       .curve(curveMonotoneX)(data); // TODO: Option for gradient style
+    
+    const holdAreaPathGenerator = area()
+      .x(v => getX(v) + getX.bandwidth() / 2)
+      .y0(v => getY(v))
+      .y1(() => getY(yMinValue))
+      .curve(curveMonotoneX)([Object.values(valueInterval)]); // TODO: Option for gradient style
 
     const firstYValue: number = data[0].yValue
     const lastYValue: number = data[data.length - 1].yValue
     const chartStaus: ChartStatus = getChartStatus(firstYValue, lastYValue)
+    const isMouseHold = valueInterval.startValue && valueInterval.endValue && valueInterval.startValue !== valueInterval.endValue
 
     const chartColorStyle = chartStaus === ChartStatus.Negative
       ? "#eb3434"
@@ -73,15 +86,49 @@ const BarChart: React.FC<BarChartProps> = ({
     //   left: 20,
     // };
 
-    const handleMouseMove = (e) => {
+    const getDataIndex = (e) => {
       const x = e.nativeEvent.offsetX;
       const index = Math.floor(x / getX.step());
+      return index;
+    }
+
+    const isLeftMouseBtn = (e) => {
+      return e.nativeEvent.which === 1
+    }
+
+    const handleMouseMove = (e) => {
+      const index = getDataIndex(e)
       setActiveIndex(index);
+
+      // If mouse holdes
+      const holdDownValue = data[index]?.yValue;
+      if (isLeftMouseBtn(e) && valueInterval.startValue && index !== valueInterval.endValue) {
+        setValueInterval(prev => ({...prev, endValue: holdDownValue}))
+      }
     };
 
     const handleMouseLeave = () => {
       setActiveIndex(null);
     };
+
+    const handleStartOfValueInterval = (e) => {
+      if (isLeftMouseBtn(e)) {
+        const index = getDataIndex(e)
+        const holdDownValue = data[index]?.yValue;
+        setValueInterval(prev => Number.isInteger(prev.startValue) 
+            ? {...prev, endValue: holdDownValue}
+            : {...prev, startValue: holdDownValue}
+        )
+      }
+    }
+
+    React.useEffect(() => {
+      console.log(valueInterval);
+    }, [valueInterval])
+
+    const handleEndtOfValueInterval = (e) => {
+      isLeftMouseBtn(e) && setValueInterval(INITIAL_INTERVAL_STATE_VALUE)
+    }
 
     return (
       <div id="barChart__container">
@@ -91,12 +138,14 @@ const BarChart: React.FC<BarChartProps> = ({
           height={height + 25}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          onPointerUp={handleEndtOfValueInterval}
+          onPointerDown={handleStartOfValueInterval}
         >
           <AxisLine orientation={AxisOrientation.X} getX={getX} getY={getY} />
           <AxisLine orientation={AxisOrientation.Y} getY={getY} />
           <path
-            d={areaPathGenerator}
-            opacity={0.2}
+            d={isMouseHold ? holdAreaPathGenerator : areaPathGenerator}
+            opacity={0.1}
             fill={chartColorStyle}
           />
           <path
@@ -108,26 +157,31 @@ const BarChart: React.FC<BarChartProps> = ({
               stroke: chartColorStyle,
             }}
           />
-          {/* TODO: Id gen-n */}
+          {/* TODO: Id generation */}
           {data.map((item, index) => (
-            <g key={index}>
+            <g
+              key={index}
+            >
               <circle
                 cx={getX(item.xValue) + getX.bandwidth() / 2}
                 cy={getY(item.yValue)}
                 r={index === activeIndex ? 6 : 4}
-                fill="#7cb5ec"
+                fill={chartColorStyle}
                 strokeWidth={index === activeIndex ? 2 : 0}
                 stroke="#fff"
-                style={{ transition: `ease-out .1s` }}
+                style={{ transition: `ease-out .2s`, cursor: `pointer` }}
               />
-              <text
-                fill="#666"
-                x={getX(item.xValue) + getX.bandwidth() / 2}
-                y={getY(item.yValue) - 10}
-                textAnchor="middle"
-              >
-                {item.yValue}
-              </text>
+              {index === activeIndex && (
+                <text
+                  fill="#666"
+                  x={getX(item.xValue) + getX.bandwidth() / 2}
+                  y={getY(item.yValue) - 10}
+                  textAnchor="middle"
+                  style={{ transition: `ease-in .2s` }}
+                >
+                  {item.yValue}
+                </text>
+              )}
             </g>
           ))}
         </svg>
