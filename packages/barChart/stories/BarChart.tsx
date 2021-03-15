@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { line, area, curveMonotoneX } from 'd3-shape';
+import { line, area, curveMonotoneX, curveBasis } from 'd3-shape';
 import { extent } from 'd3-array';
 import { max, min } from 'd3-array'
-import { isEmpty } from 'lodash';
 import getChartStatus, { ChartStatus } from './helpers/getChartStatus';
 import AxisLine, { AxisOrientation } from '../components/AxisLine/AxisLine';
+import isEqual from 'lodash.isequal';
+import isEmpty from 'lodash.isempty';
 
 export type BarChartProps = any
 
@@ -20,8 +21,8 @@ const BarChart: React.FC<BarChartProps> = ({
   ...props
 }) => {
   const INITIAL_INTERVAL_STATE_VALUE = {
-    startValue: null,
-    endValue: null,
+    startValue: { index: null, xV: null, yV: null },
+    endValue: { index: null, xV: null, yV: null },
   }
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -38,7 +39,7 @@ const BarChart: React.FC<BarChartProps> = ({
     const xScale = scaleBand()
       .domain(data.map(d => d.xValue))
       .range([0, width])
-    // .padding(0.1)
+    // .padding(3)
 
     const yScale = scaleLinear()
       .domain([yMinValue, yMaxValue])
@@ -53,6 +54,16 @@ const BarChart: React.FC<BarChartProps> = ({
       .domain([yMinValue, yMaxValue])
       .range([height, 0]);
 
+    const dataInterval = Object.values(valueInterval)
+
+    const getIntervalX = scaleBand()
+      .domain(dataInterval.map(d => d.xV))
+      .range([0, width]);
+
+    const getIntervalY = scaleLinear()
+      .domain([min(dataInterval.map(d => d.yV)), max(dataInterval.map(d => d.yV))])
+      .range([height, 0]);
+
     const lineGenerator = line()
       .x(d => getX(d.xValue) + getX.bandwidth() / 2)
       .y(d => getY(d.yValue))
@@ -63,17 +74,37 @@ const BarChart: React.FC<BarChartProps> = ({
       .y0(d => getY(d.yValue))
       .y1(() => getY(yMinValue))
       .curve(curveMonotoneX)(data); // TODO: Option for gradient style
-    
+
     const holdAreaPathGenerator = area()
-      .x(v => getX(v) + getX.bandwidth() / 2)
-      .y0(v => getY(v))
-      .y1(() => getY(yMinValue))
-      .curve(curveMonotoneX)([Object.values(valueInterval)]); // TODO: Option for gradient style
+      .x(intervalItem => getIntervalX(intervalItem.xV) + getX.bandwidth() / 2)
+      .y0(intervalItem => getIntervalY(min(dataInterval.map(d => d.yV))))
+      .y1(() => getIntervalY(max(dataInterval.map(d => d.yV))))
+      .curve(curveMonotoneX)(dataInterval); // TODO: Option for gradient style
 
     const firstYValue: number = data[0].yValue
     const lastYValue: number = data[data.length - 1].yValue
     const chartStaus: ChartStatus = getChartStatus(firstYValue, lastYValue)
-    const isMouseHold = valueInterval.startValue && valueInterval.endValue && valueInterval.startValue !== valueInterval.endValue
+    const isMouseHold = valueInterval.startValue?.index && valueInterval.endValue?.index && !isEqual(valueInterval.startValue, valueInterval.endValue)
+
+    const startIntervalLine = line().x(() => 1).y(() => getY(valueInterval.startValue.yV))(data)
+    const endIntervalLine = line().x(() =>1).y(() => getY(valueInterval.endValue.yV))(data)
+
+    const pressf = line().x((d,i) => getX(i)).y((d) => getY(d))(data)
+
+    React.useEffect(() => {
+      console.log(
+        1, lineGenerator
+      );
+      console.log(
+        2, startIntervalLine
+      );
+      console.log(
+        3, endIntervalLine
+      );
+      console.log("----");
+    }, [
+      lineGenerator, startIntervalLine, endIntervalLine
+    ])
 
     const chartColorStyle = chartStaus === ChartStatus.Negative
       ? "#eb3434"
@@ -96,14 +127,18 @@ const BarChart: React.FC<BarChartProps> = ({
       return e.nativeEvent.which === 1
     }
 
+    const getNewIntervalValue = (index) => {
+      return { index: index, xV: data[index]?.xValue, yV: data[index]?.yValue }
+    }
+
     const handleMouseMove = (e) => {
       const index = getDataIndex(e)
       setActiveIndex(index);
 
       // If mouse holdes
-      const holdDownValue = data[index]?.yValue;
-      if (isLeftMouseBtn(e) && valueInterval.startValue && index !== valueInterval.endValue) {
-        setValueInterval(prev => ({...prev, endValue: holdDownValue}))
+      const newIntervalValue = getNewIntervalValue(index)
+      if (isLeftMouseBtn(e) && valueInterval.startValue?.index && !isEqual(newIntervalValue, valueInterval.endValue)) {
+        setValueInterval(prev => ({ ...prev, endValue: newIntervalValue }))
       }
     };
 
@@ -114,21 +149,24 @@ const BarChart: React.FC<BarChartProps> = ({
     const handleStartOfValueInterval = (e) => {
       if (isLeftMouseBtn(e)) {
         const index = getDataIndex(e)
-        const holdDownValue = data[index]?.yValue;
-        setValueInterval(prev => Number.isInteger(prev.startValue) 
-            ? {...prev, endValue: holdDownValue}
-            : {...prev, startValue: holdDownValue}
+        const newIntervalValue = getNewIntervalValue(index)
+        setValueInterval(prev => Number.isInteger(prev.startValue)
+          ? { ...prev, endValue: newIntervalValue }
+          : { ...prev, startValue: newIntervalValue }
         )
       }
     }
 
-    React.useEffect(() => {
-      console.log(valueInterval);
-    }, [valueInterval])
+    // React.useEffect(() => {
+    //   console.log(valueInterval.startValue, valueInterval.endValue);
+    // }, [valueInterval])
 
     const handleEndtOfValueInterval = (e) => {
       isLeftMouseBtn(e) && setValueInterval(INITIAL_INTERVAL_STATE_VALUE)
     }
+
+    // console.log(holdAreaPathGenerator);
+
 
     return (
       <div id="barChart__container">
@@ -141,7 +179,7 @@ const BarChart: React.FC<BarChartProps> = ({
           onPointerUp={handleEndtOfValueInterval}
           onPointerDown={handleStartOfValueInterval}
         >
-          <AxisLine orientation={AxisOrientation.X} getX={getX} getY={getY} />
+          {/* <AxisLine orientation={AxisOrientation.X} getX={getX} getY={getY} />
           <AxisLine orientation={AxisOrientation.Y} getY={getY} />
           <path
             d={isMouseHold ? holdAreaPathGenerator : areaPathGenerator}
@@ -156,7 +194,35 @@ const BarChart: React.FC<BarChartProps> = ({
               strokeWidth: 2,
               stroke: chartColorStyle,
             }}
-          />
+          /> */}
+          <path
+              d={pressf}
+              style={{
+                fill: 'none',
+                strokeWidth: 1,
+                stroke: "#191B1B",
+              }}
+            />
+          {/* {isMouseHold && (
+            <g>
+              <path
+                d={startIntervalLine}
+                style={{
+                  fill: 'none',
+                  strokeWidth: 1,
+                  stroke: "#191B1B",
+                }}
+              />
+              <path
+                d={endIntervalLine}
+                style={{
+                  fill: 'none',
+                  strokeWidth: 1,
+                  stroke: "#191B1B",
+                }}
+              />
+            </g>
+          )} */}
           {/* TODO: Id generation */}
           {data.map((item, index) => (
             <g
