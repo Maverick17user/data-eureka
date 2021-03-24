@@ -13,10 +13,10 @@ const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
 
 // ex: https://observablehq.com/@d3/connected-scatterplot
 function AnimatedLineChart({
+  data = {},
   width = 720,
   height = 720,
   margin = marginF,
-  data = {},
 }) {
 
   // @ts-ignore
@@ -139,7 +139,7 @@ function AnimatedLineChart({
 
   const svgRef = useSvgMount(svg)
 
-  return <div ref={svgRef} />;
+  return <div style={{ width, height }} ref={svgRef} />;
 }
 
 export default AnimatedLineChart
