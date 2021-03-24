@@ -6,6 +6,8 @@ export interface AnimatedLineChartProps { }
 
 const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
 
+// https://github.com/vasturiano/react-globe.gl
+
 // nice stuff: https://observablehq.com/@analyzer2004/timespiral, https://observablehq.com/@mbostock/hertzsprung-russell-diagram
 // https://observablehq.com/@tezzutezzu/world-history-timeline, https://observablehq.com/@d3/zoomable-circle-packing
 
