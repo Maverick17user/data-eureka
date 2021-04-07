@@ -19,6 +19,8 @@ function AnimatedLineChart({
   width = 720,
   height = 720,
   margin = marginF,
+  curve = false,
+  closedValue,
 }) {
 
   // @ts-ignore
@@ -65,10 +67,14 @@ function AnimatedLineChart({
     svg.append("g").call(yAxis);
     
     const linesList = charts.map((_chartData, i) => {
-      return d3.line()
-        .curve(d3.curveCatmullRom)
+      const line = d3.line()
         .x(d => xList[i](d.x))
         .y(d => yList[i](d.y))
+
+      curve && line.curve(d3.curveCatmullRom)
+      (closedValue || closedValue === 0) && line.curve(d3.curveCatmullRomClosed.alpha(closedValue))
+
+      return line
     })
 
     charts.map((chartData, i) => {
