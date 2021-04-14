@@ -4,6 +4,23 @@ import useSvgMount from '../../../core/hooks/useSvgMount';
 import xAxisCreator from './functions/axisCreators/xAxisCreator';
 import yAxisCreator from './functions/axisCreators/yAxisCreator';
 
+// path {
+//   cursor: pointer;
+// }
+
+// /* path:hover {
+//   stroke-width: 3.5;
+// } */
+
+// path.unActive {
+//   stroke-width: 3.5;
+// }
+
+// path#active {
+//   opacity: 0.2;
+//   stroke-width: 2.5;
+// }
+
 export interface AnimatedLineChartProps { }
 
 const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
@@ -13,6 +30,24 @@ const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
 // nice stuff: https://observablehq.com/@analyzer2004/timespiral, https://observablehq.com/@mbostock/hertzsprung-russell-diagram
 // https://observablehq.com/@tezzutezzu/world-history-timeline, https://observablehq.com/@d3/zoomable-circle-packing
 
+function handleMouseOver(e) { 
+  // Unactive
+  d3.selectAll("path").style("opacity", "0.2")
+
+  // Active
+  d3.select(this)
+    .style("stroke-width", "3")
+    .style("opacity", "1")
+    console.log(e.target.querySelector('circle'));
+    
+}
+
+function handleMouseOut() {
+  d3.selectAll("path")
+    .style("stroke-width", "2.5")
+    .style("opacity", "1")
+}
+
 // ex: https://observablehq.com/@d3/connected-scatterplot
 function AnimatedLineChart({
   data = {},
@@ -21,6 +56,8 @@ function AnimatedLineChart({
   margin = marginF,
   curve = false,
   closedValue,
+  pointsOnly = false,
+  pointsText = true,
 }) {
 
   // @ts-ignore
@@ -79,8 +116,9 @@ function AnimatedLineChart({
 
     charts.map((chartData, i) => {
       const l = length(linesList[i](chartData));
-      
-      svg.append("path")
+      const f = []
+
+      const path = !pointsOnly && svg.append("path")
         .datum(chartData)
         .attr("fill", "none")
         .attr("stroke", "black")
@@ -89,10 +127,12 @@ function AnimatedLineChart({
         .attr("stroke-linecap", "round")
         .attr("stroke-dasharray", `0,${l}`)
         .attr("d", linesList[i])
+
+      !pointsOnly && path
         .transition()
         .duration(5000)
         .ease(d3.easeLinear)
-        .attr("stroke-dasharray", `${l},${l}`);
+        .attr("stroke-dasharray", `${l},${l}`)
     
       svg.append("g")
         .attr("fill", "white")
@@ -114,8 +154,10 @@ function AnimatedLineChart({
         .attr("transform", d => `translate(${xList[i](d.x)},${yList[i](d.y)})`)
         .attr("opacity", 0);
     
-      label.append("text")
-        .text(d => d.name)
+      pointsText && label.append("text")
+        .text(d => {
+          return d.name
+        })
         .each(function (d) {
           const t = d3.select(this);
           switch (d.orient) {
@@ -127,9 +169,13 @@ function AnimatedLineChart({
         })
         .call(halo);
     
-      label.transition()
+      pointsText && label.transition()
         .delay((_d, index) => length(linesList[i](chartData.slice(0, index + 1))) / l * (5000 - 125))
         .attr("opacity", 1);
+
+      !pointsOnly && path
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut)
 
       return svg
     })
@@ -138,8 +184,8 @@ function AnimatedLineChart({
   
     return (
       <div>
-        {svgRefsList.map((svgRef) => <>
-          <div style={{ width, height }} ref={svgRef} />;
+        {svgRefsList.map((svgRef, i) => <>
+          <div key={i} style={{ width, height }} ref={svgRef} />
         </>)}
       </div>
     )
