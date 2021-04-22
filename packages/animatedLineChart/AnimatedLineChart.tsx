@@ -1,6 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3'
-import useSvgMount from '../../../core/hooks/useSvgMount';
+import useSvgMount from '../../core/hooks/useSvgMount';
 
 export interface AnimatedLineChartProps { }
 

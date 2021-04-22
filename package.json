@@ -7,7 +7,8 @@
   "scripts": {
     "build": "npx rollup -c",
     "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publishLerna": "lerna publish"
   },
   "repository": {
     "type": "git",

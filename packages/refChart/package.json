@@ -1,0 +1,22 @@
+{
+  "name": "ref-chart",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
+  "homepage": "https://github.com/Maverick17user/data-eureka/tree/main/packages/refChart#readme",
+  "license": "ISC",
+  "main": "index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Maverick17user/data-eureka/issues"
+  }
+}

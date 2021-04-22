@@ -25,7 +25,6 @@
     "declarationMap": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "dist"
