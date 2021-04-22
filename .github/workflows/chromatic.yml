@@ -23,5 +23,5 @@ jobs:
         # Options required for Chromatic's GitHub Action
         with:
           # Chromatic projectToken
-          projectToken: project-token
+          projectToken: data-eureka
           token: ${{ secrets.TOKEN }}
