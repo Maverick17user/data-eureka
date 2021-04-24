@@ -13,10 +13,6 @@
   "files": [
     "lib"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://Maverick17user:!Cristalix20@github.com/Maverick17user/data-eureka.git"
-  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
