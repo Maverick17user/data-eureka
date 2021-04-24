@@ -1,9 +1,9 @@
 {
   "name": "@data-eureka/animated-line-chart",
-  "version": "0.0.7-alpha.0",
+  "version": "0.0.8-alpha.0",
   "description": "> TODO: description",
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
-  "homepage" : "https://6081891372229200218c235d-gkmmganipz.chromatic.com/?path=/story/example-animatedlinechart--primary",
+  "homepage": "https://6081891372229200218c235d-gkmmganipz.chromatic.com/?path=/story/example-animatedlinechart--primary",
   "repository": "https://github.com/Maverick17user/data-eureka/tree/main/packages/animatedLineChart#readme",
   "license": "ISC",
   "main": "index.ts",
