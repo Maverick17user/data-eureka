@@ -1,5 +1,5 @@
 {
-  "name": "ref-chart",
+  "name": "@data-eureka/ref-chart",
   "version": "0.0.4-alpha.0",
   "description": "> TODO: description",
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
@@ -19,5 +19,5 @@
   "bugs": {
     "url": "https://github.com/Maverick17user/data-eureka/issues"
   },
-  "gitHead": "70af087815f94daef0e42155b6d9dd8b52dc6c33"
+  "gitHead": "35f89d2d0e74ac2ac47a5ac574b836cfcc92b180"
 }
