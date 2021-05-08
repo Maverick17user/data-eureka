@@ -1,6 +1,5 @@
 import React from 'react'
 import * as d3 from 'd3'
-import useSvgMount from '../../../core/hooks/useSvgMount';
 import xAxisCreator from './functions/axisCreators/xAxisCreator';
 import yAxisCreator from './functions/axisCreators/yAxisCreator';
 
@@ -20,6 +19,7 @@ import yAxisCreator from './functions/axisCreators/yAxisCreator';
 //   opacity: 0.2;
 //   stroke-width: 2.5;
 // }
+import useSvgMount from '../../core/hooks/useSvgMount';
 
 export interface AnimatedLineChartProps { }
 

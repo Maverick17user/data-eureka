@@ -1,10 +1,10 @@
 
 import { useRef, useEffect } from 'react';
 
-const useSvgMount = (svg) => {
-  const svgRef = useRef(null);
+const useSvgMount = (svg: any) => {
+  const svgRef: any = useRef(null);
   
-  const append = (svgItem) => svgRef.current.appendChild(svgItem.node())
+  const append = (svgItem: any) => svgRef.current.appendChild(svgItem.node())
   
   useEffect(() => {
     if (svgRef.current) {

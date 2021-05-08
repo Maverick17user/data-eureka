@@ -4,7 +4,7 @@ import { line, area, curveMonotoneX, curveBasis } from 'd3-shape';
 import { extent } from 'd3-array';
 import { max, min } from 'd3-array'
 import getChartStatus, { ChartStatus } from './helpers/getChartStatus';
-import AxisLine, { AxisOrientation } from '../components/AxisLine/AxisLine';
+import AxisLine, { AxisOrientation } from '../AxisLine/AxisLine';
 import isEqual from 'lodash.isequal';
 import isEmpty from 'lodash.isempty';
 

@@ -1,5 +1,5 @@
 
-export const circleChart = () => {
+export const circleChart = () : any => {
     return {
         "name":"flare",
         "children":[

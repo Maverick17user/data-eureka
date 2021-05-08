@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import AnimatedLineChart, { AnimatedLineChartProps } from './AnimatedLineChart';
-import { generateData } from './../../generators/src/animatedLineChartTestData';
+import { generateData } from '../generators/src/animatedLineChartTestData';
 
 export default {
   title: 'Example/AnimatedLineChart',

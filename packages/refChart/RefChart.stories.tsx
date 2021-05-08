@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import RefChart, { RefChartProps } from './RefChart';
-import { refChartTestData } from './../../generators/src/refChartTestData';
+import { refChartTestData } from '../generators/src/refChartTestData';
 
 export default {
   title: 'Example/RefChart',
