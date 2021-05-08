@@ -15,7 +15,6 @@ const renderCircleChart = (w = 500, h = 500) => render(
 describe('CircleChart', () => {
 
     it('should render div container and svg well', () => {
-        // @ts-ignore
         const { getByTestId } = renderCircleChart()
 
         expect(getByTestId("container")).toBeInTheDocument();
@@ -23,7 +22,6 @@ describe('CircleChart', () => {
     });
 
     it('should have viewBox attr setted', () => {
-        // @ts-ignore
         const width = 500
         const height = 500
         

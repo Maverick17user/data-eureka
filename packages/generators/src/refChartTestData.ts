@@ -1,4 +1,4 @@
-export const refChartTestData = () => {
+export const refChartTestData = (): any => {
  
 	// @ts-ignore
 	const data = {
