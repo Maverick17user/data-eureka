@@ -2,53 +2,35 @@ import React from 'react'
 import * as d3 from 'd3'
 import xAxisCreator from './functions/axisCreators/xAxisCreator';
 import yAxisCreator from './functions/axisCreators/yAxisCreator';
-
-// path {
-//   cursor: pointer;
-// }
-
-// /* path:hover {
-//   stroke-width: 3.5;
-// } */
-
-// path.unActive {
-//   stroke-width: 3.5;
-// }
-
-// path#active {
-//   opacity: 0.2;
-//   stroke-width: 2.5;
-// }
 import useSvgMount from '../../core/hooks/useSvgMount';
+import IAnimatedLineChartProps from './types/IAnimatedLineChartProps';
+import { Point } from './types/AnimatedLineChartData';
 
-export interface AnimatedLineChartProps { }
+export const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
+export const activeStrokeWidth = "3"
+export const activeOpacity = "1"
+export const activeOutStrokeWidth = "2.5"
+export const activeOutOpacity = "1"
 
-const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
-
-// https://github.com/vasturiano/react-globe.gl
-
-// nice stuff: https://observablehq.com/@analyzer2004/timespiral, https://observablehq.com/@mbostock/hertzsprung-russell-diagram
-// https://observablehq.com/@tezzutezzu/world-history-timeline, https://observablehq.com/@d3/zoomable-circle-packing
-
-function handleMouseOver(e) { 
+export function handleMouseOver(e: any) { 
   // Unactive
   d3.selectAll("path").style("opacity", "0.2")
 
   // Active
+  // @ts-ignore
   d3.select(this)
-    .style("stroke-width", "3")
-    .style("opacity", "1")
+    .style("stroke-width", activeStrokeWidth)
+    .style("opacity", activeOpacity)
     console.log(e.target.querySelector('circle'));
     
 }
 
-function handleMouseOut() {
+export function handleMouseOut() {
   d3.selectAll("path")
-    .style("stroke-width", "2.5")
-    .style("opacity", "1")
+    .style("stroke-width", activeOutStrokeWidth)
+    .style("opacity", activeOutOpacity)
 }
 
-// ex: https://observablehq.com/@d3/connected-scatterplot
 function AnimatedLineChart({
   data = {},
   width = 720,
@@ -58,13 +40,15 @@ function AnimatedLineChart({
   closedValue,
   pointsOnly = false,
   pointsText = true,
-}) {
+}: IAnimatedLineChartProps) {
 
   // @ts-ignore
   const { charts, xTitle, yTitle } = data
 
   if (charts.length > 0) {
-    function halo(text) {
+    // @ts-ignore
+    function halo(text: any) {
+      // @ts-ignore
       text.select(function () { return this.parentNode.insertBefore(this.cloneNode(true), this); })
         .attr("fill", "none")
         .attr("stroke", "white")
@@ -72,23 +56,28 @@ function AnimatedLineChart({
         .attr("stroke-linejoin", "round");
     }
   
-    const length = (path) => {
-      return d3.create("svg:path").attr("d", path).node().getTotalLength();
+    const length = (path: number) => {
+      try {
+        // @ts-ignore
+        return d3?.create("svg:path")?.attr("d", path)?.node()?.getTotalLength() ?? 0;
+      } catch {
+        return 0
+      }
     }
   
-    const xList = 
-      charts.map(chartData => d3.scaleLinear()
-        .domain(d3.extent(chartData, d => d.x))
-        .nice()
-        .range([margin.left, width - margin.right])
-      )
+    const xList = charts.map((chartData: Point) => d3.scaleLinear()
+      // @ts-ignore
+      .domain(d3.extent(chartData, d => d.x))
+      .nice()
+      .range([margin.left, width - margin.right])
+    )
   
-    const yList =
-      charts.map(chartData => d3.scaleLinear()
-        .domain(d3.extent(chartData, d => d.y))
-        .nice()
-        .range([height - margin.bottom, margin.top])
-      )
+    const yList = charts.map((chartData: Iterable<Point> | Point[]) => d3.scaleLinear()
+      // @ts-ignore
+      .domain(d3.extent(chartData, d => d.y))
+      .nice()
+      .range([height - margin.bottom, margin.top])
+    )
 
     const xScaleData = {width, height, marginBottom: margin.bottom}
     const yScaleData = {width, marginLeft: margin.left}
@@ -97,29 +86,34 @@ function AnimatedLineChart({
 
     const xAxis = xAxisCreator(xScaleData, xPointData)
     const yAxis = yAxisCreator(yScaleData, yPointeData)
-    
-    const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]);
+    const svg = d3.create("svg")
+      // @ts-ignore
+      .attr("viewBox", [0, 0, width, height])
+      .attr("data-testid", "svg")
     
     svg.append("g").call(xAxis);
     svg.append("g").call(yAxis);
     
-    const linesList = charts.map((_chartData, i) => {
+    const linesList = charts.map((_chartData: Iterable<Point> | Point[], i: number) => {
       const line = d3.line()
+      // @ts-ignore
         .x(d => xList[i](d.x))
+      // @ts-ignore
         .y(d => yList[i](d.y))
 
       curve && line.curve(d3.curveCatmullRom)
+      // @ts-ignore
       (closedValue || closedValue === 0) && line.curve(d3.curveCatmullRomClosed.alpha(closedValue))
 
       return line
     })
 
-    charts.map((chartData, i) => {
+    charts.map((chartData: Iterable<Point> | Point[], i: number) => {
       const l = length(linesList[i](chartData));
-      const f = []
 
       const path = !pointsOnly && svg.append("path")
         .datum(chartData)
+        .attr("data-testid", "path")
         .attr("fill", "none")
         .attr("stroke", "black")
         .attr("stroke-width", 2.5)
@@ -129,6 +123,7 @@ function AnimatedLineChart({
         .attr("d", linesList[i])
 
       !pointsOnly && path
+        // @ts-ignore
         .transition()
         .duration(5000)
         .ease(d3.easeLinear)
@@ -170,10 +165,12 @@ function AnimatedLineChart({
         .call(halo);
     
       pointsText && label.transition()
+      // @ts-ignore
         .delay((_d, index) => length(linesList[i](chartData.slice(0, index + 1))) / l * (5000 - 125))
         .attr("opacity", 1);
 
       !pointsOnly && path
+      // @ts-ignore
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut)
 
@@ -185,13 +182,13 @@ function AnimatedLineChart({
     return (
       <div>
         {svgRefsList.map((svgRef, i) => <>
-          <div key={i} style={{ width, height }} ref={svgRef} />
+          <div key={i} style={{ width, height }} ref={svgRef} data-testid="container" />
         </>)}
       </div>
     )
   } 
 
-  return "haha!"
+  return ""
 }
 
 export default AnimatedLineChart

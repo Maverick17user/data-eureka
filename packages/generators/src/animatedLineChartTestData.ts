@@ -1,5 +1,7 @@
 
-export const generateData = () => {
+import AnimatedLineChartData from './../../animatedLineChart/types/AnimatedLineChartData';
+
+export const generateData = (): AnimatedLineChartData => {
     return {
         xTitle: "Miles per person per year",
         yTitle: "Cost per gallon",

@@ -74,7 +74,7 @@ function RefChart({
 		.attr("text-anchor", d => d.children ? "end" : "start")
 		.text((d: any) => d.data.name)
 
-	const svgRef = useSvgMount(svg)
+	const svgRef: any = useSvgMount(svg)
 
 	return <div style={{ width, height }} ref={svgRef} data-testid="container" />;
 }
