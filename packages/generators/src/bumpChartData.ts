@@ -1,634 +1,634 @@
 export const bumpChartData = () => {
     return [
         {
-          "territory":"External",
-          "quarter":"Q1 2013",
-          "profit":41119.6
+          "nameGroup":"External",
+          "criteriaName":"Q1 2013",
+          "value":41119.6
         },
         {
-          "territory":"External",
-          "quarter":"Q2 2013",
-          "profit":36771.95
+          "nameGroup":"External",
+          "criteriaName":"Q2 2013",
+          "value":36771.95
         },
         {
-          "territory":"External",
-          "quarter":"Q3 2013",
-          "profit":45251.75
+          "nameGroup":"External",
+          "criteriaName":"Q3 2013",
+          "value":45251.75
         },
         {
-          "territory":"External",
-          "quarter":"Q4 2013",
-          "profit":17989.05
+          "nameGroup":"External",
+          "criteriaName":"Q4 2013",
+          "value":17989.05
         },
         {
-          "territory":"External",
-          "quarter":"Q1 2014",
-          "profit":25182.9
+          "nameGroup":"External",
+          "criteriaName":"Q1 2014",
+          "value":25182.9
         },
         {
-          "territory":"External",
-          "quarter":"Q2 2014",
-          "profit":54538.25
+          "nameGroup":"External",
+          "criteriaName":"Q2 2014",
+          "value":54538.25
         },
         {
-          "territory":"External",
-          "quarter":"Q3 2014",
-          "profit":22339.65
+          "nameGroup":"External",
+          "criteriaName":"Q3 2014",
+          "value":22339.65
         },
         {
-          "territory":"External",
-          "quarter":"Q4 2014",
-          "profit":26487.8
+          "nameGroup":"External",
+          "criteriaName":"Q4 2014",
+          "value":26487.8
         },
         {
-          "territory":"External",
-          "quarter":"Q1 2015",
-          "profit":38736.05
+          "nameGroup":"External",
+          "criteriaName":"Q1 2015",
+          "value":38736.05
         },
         {
-          "territory":"External",
-          "quarter":"Q2 2015",
-          "profit":44843.7
+          "nameGroup":"External",
+          "criteriaName":"Q2 2015",
+          "value":44843.7
         },
         {
-          "territory":"External",
-          "quarter":"Q3 2015",
-          "profit":39175.8
+          "nameGroup":"External",
+          "criteriaName":"Q3 2015",
+          "value":39175.8
         },
         {
-          "territory":"External",
-          "quarter":"Q4 2015",
-          "profit":26932.1
+          "nameGroup":"External",
+          "criteriaName":"Q4 2015",
+          "value":26932.1
         },
         {
-          "territory":"External",
-          "quarter":"Q1 2016",
-          "profit":33236.35
+          "nameGroup":"External",
+          "criteriaName":"Q1 2016",
+          "value":33236.35
         },
         {
-          "territory":"External",
-          "quarter":"Q2 2016",
-          "profit":34090.4
+          "nameGroup":"External",
+          "criteriaName":"Q2 2016",
+          "value":34090.4
         },
         {
-          "territory":"Far West",
-          "quarter":"Q1 2013",
-          "profit":278130.95
+          "nameGroup":"Far West",
+          "criteriaName":"Q1 2013",
+          "value":278130.95
         },
         {
-          "territory":"Far West",
-          "quarter":"Q2 2013",
-          "profit":355180.3
+          "nameGroup":"Far West",
+          "criteriaName":"Q2 2013",
+          "value":355180.3
         },
         {
-          "territory":"Far West",
-          "quarter":"Q3 2013",
-          "profit":277655.1
+          "nameGroup":"Far West",
+          "criteriaName":"Q3 2013",
+          "value":277655.1
         },
         {
-          "territory":"Far West",
-          "quarter":"Q4 2013",
-          "profit":339116.05
+          "nameGroup":"Far West",
+          "criteriaName":"Q4 2013",
+          "value":339116.05
         },
         {
-          "territory":"Far West",
-          "quarter":"Q1 2014",
-          "profit":358637.15
+          "nameGroup":"Far West",
+          "criteriaName":"Q1 2014",
+          "value":358637.15
         },
         {
-          "territory":"Far West",
-          "quarter":"Q2 2014",
-          "profit":378244.35
+          "nameGroup":"Far West",
+          "criteriaName":"Q2 2014",
+          "value":378244.35
         },
         {
-          "territory":"Far West",
-          "quarter":"Q3 2014",
-          "profit":360947.75
+          "nameGroup":"Far West",
+          "criteriaName":"Q3 2014",
+          "value":360947.75
         },
         {
-          "territory":"Far West",
-          "quarter":"Q4 2014",
-          "profit":313951.6
+          "nameGroup":"Far West",
+          "criteriaName":"Q4 2014",
+          "value":313951.6
         },
         {
-          "territory":"Far West",
-          "quarter":"Q1 2015",
-          "profit":389148.8
+          "nameGroup":"Far West",
+          "criteriaName":"Q1 2015",
+          "value":389148.8
         },
         {
-          "territory":"Far West",
-          "quarter":"Q2 2015",
-          "profit":366769.95
+          "nameGroup":"Far West",
+          "criteriaName":"Q2 2015",
+          "value":366769.95
         },
         {
-          "territory":"Far West",
-          "quarter":"Q3 2015",
-          "profit":340136.8
+          "nameGroup":"Far West",
+          "criteriaName":"Q3 2015",
+          "value":340136.8
         },
         {
-          "territory":"Far West",
-          "quarter":"Q4 2015",
-          "profit":383315.7
+          "nameGroup":"Far West",
+          "criteriaName":"Q4 2015",
+          "value":383315.7
         },
         {
-          "territory":"Far West",
-          "quarter":"Q1 2016",
-          "profit":374495.9
+          "nameGroup":"Far West",
+          "criteriaName":"Q1 2016",
+          "value":374495.9
         },
         {
-          "territory":"Far West",
-          "quarter":"Q2 2016",
-          "profit":218377.55
+          "nameGroup":"Far West",
+          "criteriaName":"Q2 2016",
+          "value":218377.55
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q1 2013",
-          "profit":280034.45
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q1 2013",
+          "value":280034.45
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q2 2013",
-          "profit":319310.55
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q2 2013",
+          "value":319310.55
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q3 2013",
-          "profit":332849.1
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q3 2013",
+          "value":332849.1
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q4 2013",
-          "profit":270933.85
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q4 2013",
+          "value":270933.85
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q1 2014",
-          "profit":302933.6
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q1 2014",
+          "value":302933.6
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q2 2014",
-          "profit":378663.75
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q2 2014",
+          "value":378663.75
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q3 2014",
-          "profit":308821.75
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q3 2014",
+          "value":308821.75
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q4 2014",
-          "profit":343936.35
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q4 2014",
+          "value":343936.35
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q1 2015",
-          "profit":394518.15
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q1 2015",
+          "value":394518.15
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q2 2015",
-          "profit":327691.15
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q2 2015",
+          "value":327691.15
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q3 2015",
-          "profit":400286.95
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q3 2015",
+          "value":400286.95
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q4 2015",
-          "profit":346821.6
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q4 2015",
+          "value":346821.6
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q1 2016",
-          "profit":376081.65
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q1 2016",
+          "value":376081.65
         },
         {
-          "territory":"Great Lakes",
-          "quarter":"Q2 2016",
-          "profit":344669.95
+          "nameGroup":"Great Lakes",
+          "criteriaName":"Q2 2016",
+          "value":344669.95
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q1 2013",
-          "profit":413931.2
+          "nameGroup":"Mideast",
+          "criteriaName":"Q1 2013",
+          "value":413931.2
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q2 2013",
-          "profit":441499
+          "nameGroup":"Mideast",
+          "criteriaName":"Q2 2013",
+          "value":441499
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q3 2013",
-          "profit":355402.65
+          "nameGroup":"Mideast",
+          "criteriaName":"Q3 2013",
+          "value":355402.65
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q4 2013",
-          "profit":430710.7
+          "nameGroup":"Mideast",
+          "criteriaName":"Q4 2013",
+          "value":430710.7
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q1 2014",
-          "profit":381060.1
+          "nameGroup":"Mideast",
+          "criteriaName":"Q1 2014",
+          "value":381060.1
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q2 2014",
-          "profit":546916.9
+          "nameGroup":"Mideast",
+          "criteriaName":"Q2 2014",
+          "value":546916.9
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q3 2014",
-          "profit":423951.35
+          "nameGroup":"Mideast",
+          "criteriaName":"Q3 2014",
+          "value":423951.35
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q4 2014",
-          "profit":469435.7
+          "nameGroup":"Mideast",
+          "criteriaName":"Q4 2014",
+          "value":469435.7
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q1 2015",
-          "profit":427096.1
+          "nameGroup":"Mideast",
+          "criteriaName":"Q1 2015",
+          "value":427096.1
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q2 2015",
-          "profit":516073.4
+          "nameGroup":"Mideast",
+          "criteriaName":"Q2 2015",
+          "value":516073.4
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q3 2015",
-          "profit":541920
+          "nameGroup":"Mideast",
+          "criteriaName":"Q3 2015",
+          "value":541920
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q4 2015",
-          "profit":450530.85
+          "nameGroup":"Mideast",
+          "criteriaName":"Q4 2015",
+          "value":450530.85
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q1 2016",
-          "profit":550096.65
+          "nameGroup":"Mideast",
+          "criteriaName":"Q1 2016",
+          "value":550096.65
         },
         {
-          "territory":"Mideast",
-          "quarter":"Q2 2016",
-          "profit":325576.15
+          "nameGroup":"Mideast",
+          "criteriaName":"Q2 2016",
+          "value":325576.15
         },
         {
-          "territory":"New England",
-          "quarter":"Q1 2013",
-          "profit":131328.25
+          "nameGroup":"New England",
+          "criteriaName":"Q1 2013",
+          "value":131328.25
         },
         {
-          "territory":"New England",
-          "quarter":"Q2 2013",
-          "profit":132040.95
+          "nameGroup":"New England",
+          "criteriaName":"Q2 2013",
+          "value":132040.95
         },
         {
-          "territory":"New England",
-          "quarter":"Q3 2013",
-          "profit":106902.8
+          "nameGroup":"New England",
+          "criteriaName":"Q3 2013",
+          "value":106902.8
         },
         {
-          "territory":"New England",
-          "quarter":"Q4 2013",
-          "profit":107422.1
+          "nameGroup":"New England",
+          "criteriaName":"Q4 2013",
+          "value":107422.1
         },
         {
-          "territory":"New England",
-          "quarter":"Q1 2014",
-          "profit":116352
+          "nameGroup":"New England",
+          "criteriaName":"Q1 2014",
+          "value":116352
         },
         {
-          "territory":"New England",
-          "quarter":"Q2 2014",
-          "profit":152736.1
+          "nameGroup":"New England",
+          "criteriaName":"Q2 2014",
+          "value":152736.1
         },
         {
-          "territory":"New England",
-          "quarter":"Q3 2014",
-          "profit":112615.35
+          "nameGroup":"New England",
+          "criteriaName":"Q3 2014",
+          "value":112615.35
         },
         {
-          "territory":"New England",
-          "quarter":"Q4 2014",
-          "profit":116733.25
+          "nameGroup":"New England",
+          "criteriaName":"Q4 2014",
+          "value":116733.25
         },
         {
-          "territory":"New England",
-          "quarter":"Q1 2015",
-          "profit":134454.25
+          "nameGroup":"New England",
+          "criteriaName":"Q1 2015",
+          "value":134454.25
         },
         {
-          "territory":"New England",
-          "quarter":"Q2 2015",
-          "profit":132797.2
+          "nameGroup":"New England",
+          "criteriaName":"Q2 2015",
+          "value":132797.2
         },
         {
-          "territory":"New England",
-          "quarter":"Q3 2015",
-          "profit":133825.5
+          "nameGroup":"New England",
+          "criteriaName":"Q3 2015",
+          "value":133825.5
         },
         {
-          "territory":"New England",
-          "quarter":"Q4 2015",
-          "profit":144050.9
+          "nameGroup":"New England",
+          "criteriaName":"Q4 2015",
+          "value":144050.9
         },
         {
-          "territory":"New England",
-          "quarter":"Q1 2016",
-          "profit":174459.6
+          "nameGroup":"New England",
+          "criteriaName":"Q1 2016",
+          "value":174459.6
         },
         {
-          "territory":"New England",
-          "quarter":"Q2 2016",
-          "profit":120667
+          "nameGroup":"New England",
+          "criteriaName":"Q2 2016",
+          "value":120667
         },
         {
-          "territory":"Plains",
-          "quarter":"Q1 2013",
-          "profit":295160.15
+          "nameGroup":"Plains",
+          "criteriaName":"Q1 2013",
+          "value":295160.15
         },
         {
-          "territory":"Plains",
-          "quarter":"Q2 2013",
-          "profit":444106.95
+          "nameGroup":"Plains",
+          "criteriaName":"Q2 2013",
+          "value":444106.95
         },
         {
-          "territory":"Plains",
-          "quarter":"Q3 2013",
-          "profit":371220.75
+          "nameGroup":"Plains",
+          "criteriaName":"Q3 2013",
+          "value":371220.75
         },
         {
-          "territory":"Plains",
-          "quarter":"Q4 2013",
-          "profit":331776
+          "nameGroup":"Plains",
+          "criteriaName":"Q4 2013",
+          "value":331776
         },
         {
-          "territory":"Plains",
-          "quarter":"Q1 2014",
-          "profit":358080.15
+          "nameGroup":"Plains",
+          "criteriaName":"Q1 2014",
+          "value":358080.15
         },
         {
-          "territory":"Plains",
-          "quarter":"Q2 2014",
-          "profit":402917.3
+          "nameGroup":"Plains",
+          "criteriaName":"Q2 2014",
+          "value":402917.3
         },
         {
-          "territory":"Plains",
-          "quarter":"Q3 2014",
-          "profit":369758.5
+          "nameGroup":"Plains",
+          "criteriaName":"Q3 2014",
+          "value":369758.5
         },
         {
-          "territory":"Plains",
-          "quarter":"Q4 2014",
-          "profit":429549.4
+          "nameGroup":"Plains",
+          "criteriaName":"Q4 2014",
+          "value":429549.4
         },
         {
-          "territory":"Plains",
-          "quarter":"Q1 2015",
-          "profit":468077.85
+          "nameGroup":"Plains",
+          "criteriaName":"Q1 2015",
+          "value":468077.85
         },
         {
-          "territory":"Plains",
-          "quarter":"Q2 2015",
-          "profit":468586.05
+          "nameGroup":"Plains",
+          "criteriaName":"Q2 2015",
+          "value":468586.05
         },
         {
-          "territory":"Plains",
-          "quarter":"Q3 2015",
-          "profit":475360.3
+          "nameGroup":"Plains",
+          "criteriaName":"Q3 2015",
+          "value":475360.3
         },
         {
-          "territory":"Plains",
-          "quarter":"Q4 2015",
-          "profit":435609.1
+          "nameGroup":"Plains",
+          "criteriaName":"Q4 2015",
+          "value":435609.1
         },
         {
-          "territory":"Plains",
-          "quarter":"Q1 2016",
-          "profit":430343.7
+          "nameGroup":"Plains",
+          "criteriaName":"Q1 2016",
+          "value":430343.7
         },
         {
-          "territory":"Plains",
-          "quarter":"Q2 2016",
-          "profit":260109.7
+          "nameGroup":"Plains",
+          "criteriaName":"Q2 2016",
+          "value":260109.7
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q1 2013",
-          "profit":121434.25
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q1 2013",
+          "value":121434.25
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q2 2013",
-          "profit":159530.8
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q2 2013",
+          "value":159530.8
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q3 2013",
-          "profit":171485.55
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q3 2013",
+          "value":171485.55
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q4 2013",
-          "profit":171937.6
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q4 2013",
+          "value":171937.6
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q1 2014",
-          "profit":149487.3
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q1 2014",
+          "value":149487.3
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q2 2014",
-          "profit":218180.95
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q2 2014",
+          "value":218180.95
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q3 2014",
-          "profit":247382.5
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q3 2014",
+          "value":247382.5
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q4 2014",
-          "profit":168867.35
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q4 2014",
+          "value":168867.35
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q1 2015",
-          "profit":219469.15
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q1 2015",
+          "value":219469.15
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q2 2015",
-          "profit":225063.45
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q2 2015",
+          "value":225063.45
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q3 2015",
-          "profit":217127.25
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q3 2015",
+          "value":217127.25
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q4 2015",
-          "profit":190882
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q4 2015",
+          "value":190882
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q1 2016",
-          "profit":179538.9
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q1 2016",
+          "value":179538.9
         },
         {
-          "territory":"Rocky Mountain",
-          "quarter":"Q2 2016",
-          "profit":135342.4
+          "nameGroup":"Rocky Mountain",
+          "criteriaName":"Q2 2016",
+          "value":135342.4
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q1 2013",
-          "profit":556678.6
+          "nameGroup":"Southeast",
+          "criteriaName":"Q1 2013",
+          "value":556678.6
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q2 2013",
-          "profit":684290.8
+          "nameGroup":"Southeast",
+          "criteriaName":"Q2 2013",
+          "value":684290.8
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q3 2013",
-          "profit":577302.35
+          "nameGroup":"Southeast",
+          "criteriaName":"Q3 2013",
+          "value":577302.35
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q4 2013",
-          "profit":626020.7
+          "nameGroup":"Southeast",
+          "criteriaName":"Q4 2013",
+          "value":626020.7
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q1 2014",
-          "profit":523957.55
+          "nameGroup":"Southeast",
+          "criteriaName":"Q1 2014",
+          "value":523957.55
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q2 2014",
-          "profit":693574.45
+          "nameGroup":"Southeast",
+          "criteriaName":"Q2 2014",
+          "value":693574.45
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q3 2014",
-          "profit":579825.6
+          "nameGroup":"Southeast",
+          "criteriaName":"Q3 2014",
+          "value":579825.6
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q4 2014",
-          "profit":664541.05
+          "nameGroup":"Southeast",
+          "criteriaName":"Q4 2014",
+          "value":664541.05
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q1 2015",
-          "profit":754257.15
+          "nameGroup":"Southeast",
+          "criteriaName":"Q1 2015",
+          "value":754257.15
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q2 2015",
-          "profit":705444.95
+          "nameGroup":"Southeast",
+          "criteriaName":"Q2 2015",
+          "value":705444.95
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q3 2015",
-          "profit":726478.9
+          "nameGroup":"Southeast",
+          "criteriaName":"Q3 2015",
+          "value":726478.9
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q4 2015",
-          "profit":707994.35
+          "nameGroup":"Southeast",
+          "criteriaName":"Q4 2015",
+          "value":707994.35
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q1 2016",
-          "profit":696234.2
+          "nameGroup":"Southeast",
+          "criteriaName":"Q1 2016",
+          "value":696234.2
         },
         {
-          "territory":"Southeast",
-          "quarter":"Q2 2016",
-          "profit":520632
+          "nameGroup":"Southeast",
+          "criteriaName":"Q2 2016",
+          "value":520632
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q1 2013",
-          "profit":333957.7
+          "nameGroup":"Southwest",
+          "criteriaName":"Q1 2013",
+          "value":333957.7
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q2 2013",
-          "profit":399087.1
+          "nameGroup":"Southwest",
+          "criteriaName":"Q2 2013",
+          "value":399087.1
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q3 2013",
-          "profit":373194.65
+          "nameGroup":"Southwest",
+          "criteriaName":"Q3 2013",
+          "value":373194.65
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q4 2013",
-          "profit":393113.95
+          "nameGroup":"Southwest",
+          "criteriaName":"Q4 2013",
+          "value":393113.95
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q1 2014",
-          "profit":354642.05
+          "nameGroup":"Southwest",
+          "criteriaName":"Q1 2014",
+          "value":354642.05
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q2 2014",
-          "profit":460565.4
+          "nameGroup":"Southwest",
+          "criteriaName":"Q2 2014",
+          "value":460565.4
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q3 2014",
-          "profit":387380.95
+          "nameGroup":"Southwest",
+          "criteriaName":"Q3 2014",
+          "value":387380.95
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q4 2014",
-          "profit":564150.8
+          "nameGroup":"Southwest",
+          "criteriaName":"Q4 2014",
+          "value":564150.8
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q1 2015",
-          "profit":486550.15
+          "nameGroup":"Southwest",
+          "criteriaName":"Q1 2015",
+          "value":486550.15
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q2 2015",
-          "profit":431447.45
+          "nameGroup":"Southwest",
+          "criteriaName":"Q2 2015",
+          "value":431447.45
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q3 2015",
-          "profit":357119.05
+          "nameGroup":"Southwest",
+          "criteriaName":"Q3 2015",
+          "value":357119.05
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q4 2015",
-          "profit":395999.55
+          "nameGroup":"Southwest",
+          "criteriaName":"Q4 2015",
+          "value":395999.55
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q1 2016",
-          "profit":390529.45
+          "nameGroup":"Southwest",
+          "criteriaName":"Q1 2016",
+          "value":390529.45
         },
         {
-          "territory":"Southwest",
-          "quarter":"Q2 2016",
-          "profit":291935.25
+          "nameGroup":"Southwest",
+          "criteriaName":"Q2 2016",
+          "value":291935.25
         }
       ]
 }
