@@ -1,20 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 // import { hierarchy, tree } from 'd3-hierarchy'
 import * as d3 from 'd3'
-
-export interface RefChartProps {
-
-}
+import IRefChartProps from './types/IRefChartProps';
+import useSvgMount from '../../core/hooks/useSvgMount';
 
 // Ex.: https://observablehq.com/@d3/tidy-tree?collection=@d3/d3-hierarchy
 function RefChart({
 	data = [],
 	width = 950,
 	height = 300,
-}) {
+}: IRefChartProps) {
 
-	const treeBuilder = data => {
-		const root = d3.hierarchy(data);
+	const treeBuilder = (data: any) => {
+		const root: any = d3.hierarchy(data);
 		root.dx = 10;
 		root.dy = width / (root.height + 1);
 		return d3.tree().nodeSize([root.dx, root.dy])(root);
@@ -30,14 +28,18 @@ function RefChart({
 	});
 
 	const svg = d3.create("svg")
-		.attr("viewBox", [0, 0, width, x1 - x0 + root.dx * 2]);
+		// @ts-ignore
+		.attr("viewBox", [0, 0, width, x1 - x0 + root.dx * 2])
+		.attr("data-testid", "svg")
 
 	const g = svg.append("g")
 		.attr("font-family", "sans-serif")
 		.attr("font-size", 10)
+		// @ts-ignore
 		.attr("transform", `translate(${root.dy / 3},${root.dx - x0})`);
 
 	g.append("g")
+		.attr("data-testid", "g")
 		.attr("fill", "none")
 		.attr("stroke", "#555")
 		.attr("stroke-opacity", 0.4)
@@ -45,8 +47,11 @@ function RefChart({
 		.selectAll("path")
 		.data(root.links())
 		.join("path")
+		// @ts-ignore
 		.attr("d", d3.linkHorizontal()
+			// @ts-ignore
 			.x(d => d.y)
+			// @ts-ignore
 			.y(d => d.x));
 
 	const node = g.append("g")
@@ -58,23 +63,20 @@ function RefChart({
 		.attr("transform", d => `translate(${d.y},${d.x})`);
 
 	node.append("circle")
+		.attr("data-testid", "reference_point")
 		.attr("fill", d => d.children ? "#555" : "#999")
 		.attr("r", 2.5);
 
 	node.append("text")
+		.attr("data-testid", "reference_point_text")
 		.attr("dy", "0.31em")
 		.attr("x", d => d.children ? -6 : 6)
 		.attr("text-anchor", d => d.children ? "end" : "start")
-		.text(d => d.data.name)
-		.clone(true).lower()
-		.attr("stroke", "white");
+		.text((d: any) => d.data.name)
 
-	const svgRef = useRef(null);
-	useEffect(() => {
-		svgRef.current && svgRef.current.appendChild(svg.node())
-	}, [svgRef]);
+	const svgRef: any = useSvgMount(svg)
 
-	return <div style={{ width, height }} ref={svgRef} />;
+	return <div style={{ width, height }} ref={svgRef} data-testid="container" />;
 }
 
 export default RefChart

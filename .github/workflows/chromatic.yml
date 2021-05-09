@@ -1,0 +1,27 @@
+# Workflow name
+name: 'Chromatic Deployment'
+
+# Event for the workflow
+on:
+  # Trigger the workflow on push request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+
+# List of jobs
+jobs:
+  test:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn
+        # Adds Chromatic as a step in the workflow
+      - uses: chromaui/action@v1
+        # Options required for Chromatic's GitHub Action
+        with:
+          # Chromatic projectToken
+          projectToken: ${{ secrets.TOKEN }}
+          token: ${{ secrets.TOKEN }}
