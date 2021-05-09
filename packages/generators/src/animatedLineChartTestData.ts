@@ -1,5 +1,4 @@
-
-import AnimatedLineChartData from './../../animatedLineChart/types/AnimatedLineChartData';
+import AnimatedLineChartData from "../../animatedLineChart/types/AnimatedLineChartData"
 
 export const generateData = (): AnimatedLineChartData => {
     return {

@@ -16,9 +16,10 @@ describe('CircleChart', () => {
 
     it('should render div container and svg well', () => {
         const { getByTestId } = renderCircleChart()
-
-        expect(getByTestId("container")).toBeInTheDocument();
-        expect(getByTestId("svg")).toBeInTheDocument();
+        waitFor(() => {
+            expect(getByTestId("container")).toBeInTheDocument();
+            expect(getByTestId("svg")).toBeInTheDocument();
+        })
     });
 
     it('should have viewBox attr setted', () => {
@@ -26,55 +27,63 @@ describe('CircleChart', () => {
         const height = 500
         
         const { getByTestId } = renderCircleChart(width, height)
-        
-        const supposeViewBoxValue = `-${width / 2} -${height / 2} ${width} ${height}`
-        expect(getByTestId("svg")).toHaveAttribute("viewBox", supposeViewBoxValue);
+        waitFor(() => {
+            const supposeViewBoxValue = `-${width / 2} -${height / 2} ${width} ${height}`
+            expect(getByTestId("svg")).toHaveAttribute("viewBox", supposeViewBoxValue);
+        })
     });
 
     it('svg should be styled', () => {
         const { getByTestId } = renderCircleChart()
 
-        expect(getByTestId("svg")).toHaveStyle({
-            display: "block",
-            margin: "0 -14px",
-            cursor: "pointer",
+        waitFor(() => {
+            expect(getByTestId("svg")).toHaveStyle({
+                display: "block",
+                margin: "0 -14px",
+                cursor: "pointer",
+            })
         })
     })
 
     it('circles should be rendered well', () => {
         const { getAllByTestId } = renderCircleChart()
-
-        expect(getAllByTestId("circle").length).toBe(251);
+        waitFor(() => {
+            expect(getAllByTestId("circle").length).toBe(251);
+        })
     })
     
     it('g wrapper (for circles) should be rendered well', () => {
         const { getByTestId } = renderCircleChart()
 
-        expect(getByTestId("gWrapper")).toBeInTheDocument();
+        waitFor(() => {
+            expect(getByTestId("gWrapper")).toBeInTheDocument();
+        })
     })
 
     it('should change styles on chart interaction', () => {
         const { getAllByTestId } = renderCircleChart()
-        const circle = getAllByTestId("circle")[0]
-        
-        expect(circle).toBeInTheDocument()
 
-        fireEvent.mouseOver(circle);
         waitFor(() => {
-            expect(circle).toHaveStyle({stroke: SELECTED_BORDER_COLOR})
-
-            fireEvent.mouseOut(circle);
+            const circle = getAllByTestId("circle")[0]
+            expect(circle).toBeInTheDocument()
+    
+            fireEvent.mouseOver(circle);
             waitFor(() => {
-                expect(circle).toHaveStyle({stroke: null})
+                expect(circle).toHaveStyle({stroke: SELECTED_BORDER_COLOR})
+    
+                fireEvent.mouseOut(circle);
+                waitFor(() => {
+                    expect(circle).toHaveStyle({stroke: null})
+                })
             })
         })
     }) 
 
     it('should play animation on circle selectiong', () => {
         const { getAllByTestId, getByTestId } = renderCircleChart()
+
         waitFor(() => {
             const circle = getAllByTestId("circle")[0]
-            
             expect(circle).toBeInTheDocument()
     
             fireEvent.click(circle);
