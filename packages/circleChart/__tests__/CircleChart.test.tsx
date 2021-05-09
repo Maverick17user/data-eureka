@@ -8,6 +8,7 @@ const renderCircleChart = (w = 500, h = 500) => render(
     <CircleChart
         width={w}
         height={h}
+        // @ts-ignore
         data={getCircleChartData()}
     />
 );

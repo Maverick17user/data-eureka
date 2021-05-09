@@ -1,7 +1,7 @@
 
 import { useRef, useEffect } from 'react';
 
-const useSvgMount = (svg: any) => {
+const useSvgMount = (svg: any, returnAsArray?: string) => {
   const svgRef: any = useRef(null);
   
   const append = (svgItem: any) => svgRef.current.appendChild(svgItem.node())
@@ -15,8 +15,8 @@ const useSvgMount = (svg: any) => {
       }
     }
   }, [svgRef]);
-
-  return [svgRef]
+  
+  return returnAsArray ? [svgRef] : svgRef
 }
 
 export default useSvgMount

@@ -177,11 +177,11 @@ function AnimatedLineChart({
       return svg
     })
 
-    const svgRefsList = useSvgMount(svg)
+    const svgRefsList = useSvgMount(svg, "ARRAY")
   
     return (
       <div>
-        {svgRefsList.map((svgRef, i) => <>
+        {svgRefsList.map((svgRef: any, i: number) => <>
           <div key={i} style={{ width, height }} ref={svgRef} data-testid="container" />
         </>)}
       </div>
