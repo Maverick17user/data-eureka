@@ -109,7 +109,7 @@ function CircleChart({
 			});
 	}
 
-	const svgRef = useSvgMount(svg)
+	const svgRef: any = useSvgMount(svg)
 
 	return <div style={{ width, height }} ref={svgRef} data-testid="container" />
 }
