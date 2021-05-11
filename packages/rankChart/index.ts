@@ -1,1 +1,2 @@
-export * from './RankChart'
+// @ts-ignore
+export { default as RankChart } from './RankChart'
