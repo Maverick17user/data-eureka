@@ -1,10 +1,8 @@
 import React from 'react'
-// import { hierarchy, tree } from 'd3-hierarchy'
 import * as d3 from 'd3'
 import IRefChartProps from './types/IRefChartProps';
 import useSvgMount from '../../core/hooks/useSvgMount';
 
-// Ex.: https://observablehq.com/@d3/tidy-tree?collection=@d3/d3-hierarchy
 function RefChart({
 	data = [],
 	width = 950,
