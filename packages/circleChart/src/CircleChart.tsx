@@ -7,7 +7,7 @@ import { HierarchyNode } from 'd3';
 
 export const SELECTED_BORDER_COLOR = "#000"
 
-function CircleChart({
+export function CircleChart({
 	data = [],
 	width = 932,
 	height = 930,
@@ -113,5 +113,3 @@ function CircleChart({
 
 	return <div style={{ width, height }} ref={svgRef} data-testid="container" />
 }
-
-export default CircleChart

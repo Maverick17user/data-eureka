@@ -3,7 +3,7 @@ import * as d3 from 'd3'
 import IRefChartProps from '../types/IRefChartProps';
 import useSvgMount from '../../../core/hooks/useSvgMount';
 
-function RefChart({
+export function RefChart({
 	data = [],
 	width = 950,
 	height = 300,
@@ -76,5 +76,3 @@ function RefChart({
 
 	return <div style={{ width, height }} ref={svgRef} data-testid="container" />;
 }
-
-export default RefChart

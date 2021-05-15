@@ -29,7 +29,7 @@ export function handleMouseOut() {
     .style("opacity", activeOutOpacity)
 }
 
-export default function AnimatedLineChart({
+export function AnimatedLineChart({
   data = {},
   width = 720,
   height = 720,

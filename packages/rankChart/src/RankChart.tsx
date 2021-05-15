@@ -47,7 +47,7 @@ const getChartData = (
 
 export const MARGINS = { left: 105, right: 105, top: 20, bottom: 50 }
 
-function RankChart({
+export function RankChart({
     data,
     width = 1120,
     height = 541,
@@ -223,5 +223,3 @@ function RankChart({
 
     return <div style={{ width, height }} ref={svgRef} data-testid="container" />
 }
-
-export default RankChart
