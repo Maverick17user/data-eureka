@@ -32,14 +32,14 @@ const LOCAL_EXTERNALS = [
 
 const common = {
   input: INPUT_FILE,
-  external: IS_BROWSER_BUNDLE ? LOCAL_EXTERNALS : ALL_MODULES,
+  external: LOCAL_EXTERNALS,
 }
 
 
 const mirror = array =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 
-const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
+const formats = ["es", "cjs", "umd"]
 
 export default formats.map(format => ({
   ...common,
