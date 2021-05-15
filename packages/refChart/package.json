@@ -10,6 +10,13 @@
     "lib": "lib",
     "test": "__tests__"
   },
+  "devDependencies": {
+    "react": "^16.8.6",
+    "d3": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
   "files": [
     "lib"
   ],
