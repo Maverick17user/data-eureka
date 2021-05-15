@@ -12,7 +12,7 @@ export const activeOpacity = "1"
 export const activeOutStrokeWidth = "2.5"
 export const activeOutOpacity = "1"
 
-export function handleMouseOver(e: any) { 
+export function handleMouseOver() { 
   // Unactive
   d3.selectAll("path").style("opacity", "0.2")
 
@@ -20,9 +20,7 @@ export function handleMouseOver(e: any) {
   // @ts-ignore
   d3.select(this)
     .style("stroke-width", activeStrokeWidth)
-    .style("opacity", activeOpacity)
-    console.log(e.target.querySelector('circle'));
-    
+    .style("opacity", activeOpacity)    
 }
 
 export function handleMouseOut() {
@@ -31,7 +29,7 @@ export function handleMouseOut() {
     .style("opacity", activeOutOpacity)
 }
 
-function AnimatedLineChart({
+export default function AnimatedLineChart({
   data = {},
   width = 720,
   height = 720,
@@ -190,5 +188,3 @@ function AnimatedLineChart({
 
   return ""
 }
-
-export default AnimatedLineChart

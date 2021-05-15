@@ -205,28 +205,53 @@ const LOCAL_EXTERNALS = [
 const mirror = array =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 
-const formats = ["es", "cjs", "umd"];
+const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
 
 export default formats.map(format => ({
   plugins: [
     resolve({
       extensions,
-      module: true,
-      jsnext: true,
-      main: true,
-      browser: true,
-      modulesOnly: true,
+      // module: true,
+      // jsnext: true,
+      // main: true,
+      // browser: true,
+      // modulesOnly: true,
     }), 
     commonjs({
       include: /node_modules/,
     }),
+    typescript(),
+    // babel({
+    //   exclude: ["node_modules/**"],
+    //   presets: [['@babel/preset-env', {'modules': false}], '@babel/preset-react', "@babel/preset-typescript"],
+    //   plugins: [['@babel/plugin-proposal-class-properties', { 'loose': true }]],
+    //   extensions,
+    // }),
     babel({
-      exclude: ["node_modules/**"],
-      presets: [['@babel/preset-env', {'modules': false}], '@babel/react', "@babel/preset-typescript"],
-      plugins: [['@babel/plugin-proposal-class-properties', { 'loose': true }]],
       extensions,
+      exclude: /node_modules/,
+      babelrc: false,
+      runtimeHelpers: true,
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react',
+        '@babel/preset-typescript',
+      ],
+      plugins: [
+        'react-require',
+        '@babel/plugin-syntax-dynamic-import',
+        '@babel/plugin-proposal-class-properties',
+        ['@babel/plugin-proposal-object-rest-spread', {
+          useBuiltIns: true,
+        }],
+        ['@babel/plugin-transform-runtime', {
+          corejs: 3,
+          helpers: true,
+          regenerator: true,
+          useESModules: false,
+        }],
+      ],
     }),
-    // typescript(),
     cleanup()
   ],
   input: INPUT_FILE,
@@ -238,7 +263,7 @@ export default formats.map(format => ({
     format, 
     sourcemap: true,
     name: LERNA_PACKAGE_NAME,
-    globals: mirror(ALL_MODULES),
+    globals: IS_BROWSER_BUNDLE ? mirror(ALL_MODULES) : LOCAL_GLOBALS,
     amd: {
       id: LERNA_PACKAGE_NAME
     },

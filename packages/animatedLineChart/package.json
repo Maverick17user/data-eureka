@@ -6,7 +6,7 @@
   "homepage": "https://6081891372229200218c235d-gkmmganipz.chromatic.com/?path=/story/example-animatedlinechart--primary",
   "repository": "https://github.com/Maverick17user/data-eureka/tree/main/packages/animatedLineChart#readme",
   "license": "ISC",
-  "main": "index.ts",
+  "main": "./dist/index.umd.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

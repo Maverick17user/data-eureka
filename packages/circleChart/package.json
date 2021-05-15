@@ -5,7 +5,7 @@
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
   "homepage": "https://github.com/Maverick17user/data-eureka/tree/main/packages/circleChart#readme",
   "license": "ISC",
-  "main": "index.ts",
+  "main": "./dist/index.umd.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
