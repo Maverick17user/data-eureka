@@ -19,12 +19,26 @@ const ALL_MODULES = lernaGetPackages(LERNA_ROOT_PATH).map(
   ({ package: { name } }) => name
 );
 
-console.log("ALL_MODULES", ALL_MODULES)
+const externals = [
+  'prop-types',
+]
+
+const mapGlobal = name => {
+  if (name.indexOf('d3') === 0) return 'd3'
+  if (name === 'react') return 'React'
+  return name
+}
+
+const common = {
+  input: INPUT_FILE,
+  external: id => externals.includes(id)
+      || id.indexOf('react') === 0
+      || id.indexOf('d3') === 0
+}
 
 const LOCAL_GLOBALS = {
   'react': 'React',
   'react-dom': 'ReactDOM',
-  'd3': 'd3',
 };
 
 const LOCAL_EXTERNALS = [
@@ -39,14 +53,15 @@ const mirror = array =>
 const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
 
 export default formats.map(format => ({
+  ...common,
   plugins: [
     resolve({
       extensions,
-      // module: true,
-      // jsnext: true,
-      // main: true,
-      // browser: true,
-      // modulesOnly: true,
+      module: true,
+      jsnext: true,
+      main: true,
+      browser: true,
+      modulesOnly: true,
     }), 
     commonjs({
       include: /node_modules/,
@@ -79,19 +94,14 @@ export default formats.map(format => ({
     }),
     cleanup()
   ],
-  input: INPUT_FILE,
-  
-  external: IS_BROWSER_BUNDLE ? LOCAL_EXTERNALS : ALL_MODULES,
-  
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
     format, 
     sourcemap: true,
     name: LERNA_PACKAGE_NAME,
-    globals: IS_BROWSER_BUNDLE ? mirror(ALL_MODULES) : LOCAL_GLOBALS,
+    globals: mapGlobal,
     amd: {
       id: LERNA_PACKAGE_NAME
     },
-    globals: LOCAL_GLOBALS
   },
 }));
