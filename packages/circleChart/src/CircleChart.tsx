@@ -10,7 +10,7 @@ export const SELECTED_BORDER_COLOR = "#000"
 function CircleChart({
 	data = [],
 	width = 932,
-	height = 932,
+	height = 931,
 }: ICircleChartProps) {
 
 	const pack = (data: CircleChartData) => d3.pack()

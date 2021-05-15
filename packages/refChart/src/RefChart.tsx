@@ -6,7 +6,7 @@ import useSvgMount from '../../../core/hooks/useSvgMount';
 function RefChart({
 	data = [],
 	width = 950,
-	height = 300,
+	height = 301,
 }: IRefChartProps) {
 
 	const treeBuilder = (data: any) => {
