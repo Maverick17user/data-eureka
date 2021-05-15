@@ -205,7 +205,7 @@ const LOCAL_EXTERNALS = [
 const mirror = array =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 
-const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
+const formats = ["es", "cjs", "umd"];
 
 export default formats.map(format => ({
   plugins: [
@@ -238,7 +238,7 @@ export default formats.map(format => ({
     format, 
     sourcemap: true,
     name: LERNA_PACKAGE_NAME,
-    globals: IS_BROWSER_BUNDLE ? mirror(ALL_MODULES) : LOCAL_GLOBALS,
+    globals: mirror(ALL_MODULES),
     amd: {
       id: LERNA_PACKAGE_NAME
     },
