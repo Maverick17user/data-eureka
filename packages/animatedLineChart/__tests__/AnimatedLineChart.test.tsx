@@ -4,10 +4,10 @@ import AnimatedLineChart, {
     activeOutOpacity, 
     activeOutStrokeWidth, 
     activeStrokeWidth 
-} from '../AnimatedLineChart'
+} from '../src/AnimatedLineChart'
 import '@testing-library/jest-dom'
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { generateData } from './../../generators/src/animatedLineChartTestData';
+import { generateData } from '../../../generators/animatedLineChartTestData';
 
 const renderCircleChart = (w = 500, h = 500) => render(
     // @ts-ignore

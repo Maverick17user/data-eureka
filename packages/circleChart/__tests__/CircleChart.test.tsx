@@ -1,6 +1,6 @@
 import React from 'react'
-import CircleChart, { SELECTED_BORDER_COLOR } from '../CircleChart'
-import { circleChart as getCircleChartData } from './../../generators/src/circleChart';
+import CircleChart, { SELECTED_BORDER_COLOR } from '../src/CircleChart'
+import { circleChart as getCircleChartData } from '../../../generators/circleChart';
 import '@testing-library/jest-dom'
 import { fireEvent, render, waitFor } from "@testing-library/react";
 

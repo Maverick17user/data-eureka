@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import RefChart, { RefChartProps } from './RefChart';
-import { refChartTestData } from '../generators/src/refChartTestData';
+import RefChart from './src/RefChart';
+import { refChartTestData } from '../../generators/refChartTestData';
+import IRefChartProps from './types/IRefChartProps';
 
 export default {
   title: 'Example/RefChart',
@@ -12,7 +13,7 @@ const COMMON_PROPS = {
   data: refChartTestData()
 }
 
-const Template: Story<RefChartProps> = (args) => <RefChart {...args} />;
+const Template: Story<IRefChartProps> = (args) => <RefChart {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {

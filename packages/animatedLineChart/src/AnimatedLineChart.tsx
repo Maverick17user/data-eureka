@@ -1,10 +1,10 @@
 import React from 'react'
 import * as d3 from 'd3'
-import xAxisCreator from './functions/axisCreators/xAxisCreator';
-import yAxisCreator from './functions/axisCreators/yAxisCreator';
-import useSvgMount from '../../core/hooks/useSvgMount';
-import IAnimatedLineChartProps from './types/IAnimatedLineChartProps';
-import { Point } from './types/AnimatedLineChartData';
+import xAxisCreator from '../functions/axisCreators/xAxisCreator';
+import yAxisCreator from '../functions/axisCreators/yAxisCreator';
+import useSvgMount from '../../../core/hooks/useSvgMount';
+import IAnimatedLineChartProps from '../types/IAnimatedLineChartProps';
+import { Point } from '../types/AnimatedLineChartData';
 
 export const marginF =  { top: 20, right: 30, bottom: 30, left: 40 }
 export const activeStrokeWidth = "3"

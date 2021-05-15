@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/Maverick17user/data-eureka/issues"
   },
-  "gitHead": "8934409c5992329f26bd479e575bef81efe337b5"
+  "gitHead": "8934409c5992329f26bd479e575bef81efe337b5",
+  "browser": true
 }

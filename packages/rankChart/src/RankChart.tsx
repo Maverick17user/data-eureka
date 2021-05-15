@@ -1,8 +1,8 @@
 import React from 'react'
 import * as d3 from 'd3'
-import useSvgMount from '../../core/hooks/useSvgMount'
-import IRankChartProps from './types/IRankChartProps';
-import { RankEntity, SvgNodeType, SvgNodeType2 } from './types/RankChartData';
+import useSvgMount from '../../../core/hooks/useSvgMount'
+import IRankChartProps from '../types/IRankChartProps';
+import { RankEntity, SvgNodeType, SvgNodeType2 } from '../types/RankChartData';
 
 const getRanking = (
     criteriaNames: (string | number)[], 

@@ -1,8 +1,8 @@
 import React from 'react'
-import RankChart from '../RankChart'
+import RankChart from '../src/RankChart'
 import '@testing-library/jest-dom'
 import { render } from "@testing-library/react";
-import { bumpChartData } from '../../generators/src/bumpChartData';
+import { bumpChartData } from '../../../generators/bumpChartData';
 
 const renderChart = (w = 500, h = 500) => render(
     // @ts-ignore

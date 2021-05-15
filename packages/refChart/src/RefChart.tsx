@@ -1,7 +1,7 @@
 import React from 'react'
 import * as d3 from 'd3'
-import IRefChartProps from './types/IRefChartProps';
-import useSvgMount from '../../core/hooks/useSvgMount';
+import IRefChartProps from '../types/IRefChartProps';
+import useSvgMount from '../../../core/hooks/useSvgMount';
 
 function RefChart({
 	data = [],

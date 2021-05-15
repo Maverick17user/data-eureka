@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import RankChart from './RankChart';
-import { bumpChartData } from '../generators/src/bumpChartData';
+import RankChart from './src/RankChart';
+import { bumpChartData } from '../../generators/bumpChartData';
 import IRankChartProps from './types/IRankChartProps';
 
 export default {

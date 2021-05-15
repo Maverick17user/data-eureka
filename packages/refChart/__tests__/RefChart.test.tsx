@@ -1,7 +1,7 @@
 import React from 'react'
-import { refChartTestData } from './../../generators/src/refChartTestData'
+import { refChartTestData } from '../../../generators/refChartTestData'
 import { render } from '@testing-library/react'
-import RefChart from '../RefChart'
+import RefChart from '../src/RefChart'
 import '@testing-library/jest-dom'
 
 const renderCircleChart = (w = 500, h = 500) => render(

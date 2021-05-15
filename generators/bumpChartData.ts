@@ -632,3 +632,358 @@ export const bumpChartData = () => {
         }
       ]
 }
+
+// export const bumpChartData = () => {
+//   return [
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"1/4 2018",
+//       "value":41119.6
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"2/4 2018",
+//       "value":36771.95
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"3/4 2018",
+//       "value":45251.75
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"4/4 2018",
+//       "value":17989.05
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"1/4 2019",
+//       "value":25182.9
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"2/4 2019",
+//       "value":54538.25
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"3/4 2019",
+//       "value":22339.65
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"4/4 2019",
+//       "value":26487.8
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"1/4 2020",
+//       "value":38736.05
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"2/4 2020",
+//       "value":44843.7
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"3/4 2020",
+//       "value":39175.8
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"4/4 2020",
+//       "value":26932.1
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"1/4 2021",
+//       "value":33236.35
+//     },
+//     {
+//       "nameGroup":"SP&500",
+//       "criteriaName":"2/4 2021",
+//       "value":34090.4
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"1/4 2018",
+//       "value":278130.95
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"2/4 2018",
+//       "value":355180.3
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"3/4 2018",
+//       "value":277655.1
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"4/4 2018",
+//       "value":339116.05
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"1/4 2019",
+//       "value":358637.15
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"2/4 2019",
+//       "value":378244.35
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"3/4 2019",
+//       "value":360947.75
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"4/4 2019",
+//       "value":313951.6
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"1/4 2020",
+//       "value":389148.8
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"2/4 2020",
+//       "value":366769.95
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"3/4 2020",
+//       "value":340136.8
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"4/4 2020",
+//       "value":383315.7
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"1/4 2021",
+//       "value":374495.9
+//     },
+//     {
+//       "nameGroup":"Dow Jones",
+//       "criteriaName":"2/4 2021",
+//       "value":218377.55
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"1/4 2018",
+//       "value":280034.45
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"2/4 2018",
+//       "value":319310.55
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"3/4 2018",
+//       "value":332849.1
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"4/4 2018",
+//       "value":270933.85
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"1/4 2019",
+//       "value":302933.6
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"2/4 2019",
+//       "value":378663.75
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"3/4 2019",
+//       "value":308821.75
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"4/4 2019",
+//       "value":343936.35
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"1/4 2020",
+//       "value":394518.15
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"2/4 2020",
+//       "value":327691.15
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"3/4 2020",
+//       "value":400286.95
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"4/4 2020",
+//       "value":346821.6
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"1/4 2021",
+//       "value":376081.65
+//     },
+//     {
+//       "nameGroup":"REIT",
+//       "criteriaName":"2/4 2021",
+//       "value":344669.95
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"1/4 2018",
+//       "value":413931.2
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"2/4 2018",
+//       "value":441499
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"3/4 2018",
+//       "value":355402.65
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"4/4 2018",
+//       "value":430710.7
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"1/4 2019",
+//       "value":381060.1
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"2/4 2019",
+//       "value":546916.9
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"3/4 2019",
+//       "value":423951.35
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"4/4 2019",
+//       "value":469435.7
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"1/4 2020",
+//       "value":427096.1
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"2/4 2020",
+//       "value":516073.4
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"3/4 2020",
+//       "value":541920
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"4/4 2020",
+//       "value":450530.85
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"1/4 2021",
+//       "value":550096.65
+//     },
+//     {
+//       "nameGroup":"Bonds",
+//       "criteriaName":"2/4 2021",
+//       "value":325576.15
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"1/4 2018",
+//       "value":131328.25
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"2/4 2018",
+//       "value":132040.95
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"3/4 2018",
+//       "value":106902.8
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"4/4 2018",
+//       "value":107422.1
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"1/4 2019",
+//       "value":116352
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"2/4 2019",
+//       "value":152736.1
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"3/4 2019",
+//       "value":112615.35
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"4/4 2019",
+//       "value":116733.25
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"1/4 2020",
+//       "value":134454.25
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"2/4 2020",
+//       "value":132797.2
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"3/4 2020",
+//       "value":133825.5
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"4/4 2020",
+//       "value":144050.9
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"1/4 2021",
+//       "value":174459.6
+//     },
+//     {
+//       "nameGroup":"Gold",
+//       "criteriaName":"2/4 2021",
+//       "value":120667
+//     },
+//     ]
+// }

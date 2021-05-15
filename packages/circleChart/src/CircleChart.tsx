@@ -1,8 +1,8 @@
 import React from 'react'
 import * as d3 from 'd3'
-import useSvgMount from '../../core/hooks/useSvgMount'
-import ICircleChartProps from './types/ICircleChartProps'
-import CircleChartData from './types/CircleChartData'
+import useSvgMount from '../../../core/hooks/useSvgMount'
+import ICircleChartProps from '../types/ICircleChartProps'
+import CircleChartData from '../types/CircleChartData'
 import { HierarchyNode } from 'd3';
 
 export const SELECTED_BORDER_COLOR = "#000"
