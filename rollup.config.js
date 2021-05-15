@@ -57,11 +57,11 @@ export default formats.map(format => ({
   plugins: [
     resolve({
       extensions,
-      module: true,
-      jsnext: true,
-      main: true,
-      browser: true,
-      modulesOnly: true,
+      // module: true,
+      // jsnext: true,
+      // main: true,
+      // browser: true,
+      // modulesOnly: true,
     }), 
     commonjs({
       include: /node_modules/,
