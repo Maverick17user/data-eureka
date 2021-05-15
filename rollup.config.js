@@ -1,8 +1,8 @@
 // import commonjs from "@rollup/plugin-commonjs";
 // import resolve from "@rollup/plugin-node-resolve";
+// import cleanup from 'rollup-plugin-cleanup'
 // import typescript from "rollup-plugin-typescript2";
 // import stripBanner from 'rollup-plugin-strip-banner'
-// import cleanup from 'rollup-plugin-cleanup'
 // import pkg from "./package.json";
 // import babel from "rollup-plugin-babel";
 // import nodeResolve from "rollup-plugin-node-resolve";
@@ -169,9 +169,12 @@
 
 import babel from "rollup-plugin-babel";
 import nodeResolve from "rollup-plugin-node-resolve";
+import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import lernaGetPackages from "lerna-get-packages";
 import path from "path";
+import cleanup from 'rollup-plugin-cleanup'
+import typescript from "rollup-plugin-typescript2";
 
 const { LERNA_PACKAGE_NAME, LERNA_ROOT_PATH } = process.env;
 const PACKAGE_ROOT_PATH = process.cwd();
@@ -179,6 +182,7 @@ const INPUT_FILE = path.join(PACKAGE_ROOT_PATH, "src/index.ts");
 const OUTPUT_DIR = path.join(PACKAGE_ROOT_PATH, "dist");
 const PKG_JSON = require(path.join(PACKAGE_ROOT_PATH, "package.json"));
 const IS_BROWSER_BUNDLE = !!PKG_JSON.browser;
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 const ALL_MODULES = lernaGetPackages(LERNA_ROOT_PATH).map(
   ({ package: { name } }) => name
@@ -205,18 +209,25 @@ const formats = IS_BROWSER_BUNDLE ? ["umd"] : ["es", "cjs"];
 
 export default formats.map(format => ({
   plugins: [
-    nodeResolve({
-      "jsnext:main": true,
-      "browser:main": true
-    }),
+    resolve({
+      extensions,
+      module: true,
+      jsnext: true,
+      main: true,
+      browser: true,
+      modulesOnly: true,
+    }), 
     commonjs({
       include: /node_modules/,
     }),
     babel({
       exclude: ["node_modules/**"],
-      presets: [['@babel/preset-env', {'modules': false}],'@babel/react'],
-      plugins: [['@babel/plugin-proposal-class-properties', { 'loose': true }]]
+      presets: [['@babel/preset-env', {'modules': false}], '@babel/react', "@babel/preset-typescript"],
+      plugins: [['@babel/plugin-proposal-class-properties', { 'loose': true }]],
+      extensions,
     }),
+    // typescript(),
+    cleanup()
   ],
   input: INPUT_FILE,
   
