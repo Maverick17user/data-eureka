@@ -50,7 +50,7 @@ export const MARGINS = { left: 105, right: 105, top: 20, bottom: 50 }
 function RankChart({
     data,
     width = 1120,
-    height = 541,
+    height = 542,
     bumpRadius = 13,
     padding = 25,
     margin = MARGINS,
