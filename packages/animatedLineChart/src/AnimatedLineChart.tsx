@@ -32,7 +32,7 @@ export function handleMouseOut() {
 export default function AnimatedLineChart({
   data = {},
   width = 720,
-  height = 721,
+  height = 720,
   margin = marginF,
   curve = false,
   closedValue,
