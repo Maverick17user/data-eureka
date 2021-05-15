@@ -1,6 +1,6 @@
 {
   "name": "@data-eureka/ref-chart",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "> TODO: description",
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
   "homepage": "https://github.com/Maverick17user/data-eureka/tree/main/packages/refChart#readme",
@@ -11,8 +11,8 @@
     "test": "__tests__"
   },
   "devDependencies": {
-    "react": "^16.8.6",
-    "d3": "^16.8.6"
+    "d3": "^16.8.6",
+    "react": "^16.8.6"
   },
   "peerDependencies": {
     "react": "^16.8.6"

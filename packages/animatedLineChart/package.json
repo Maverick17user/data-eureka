@@ -1,6 +1,6 @@
 {
   "name": "@data-eureka/animated-line-chart",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "> TODO: description",
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
   "homepage": "https://6081891372229200218c235d-gkmmganipz.chromatic.com/?path=/story/example-animatedlinechart--primary",
@@ -8,8 +8,8 @@
   "license": "ISC",
   "main": "./dist/index.umd.js",
   "devDependencies": {
-    "react": "^16.8.6",
-    "d3": "^16.8.6"
+    "d3": "^16.8.6",
+    "react": "^16.8.6"
   },
   "peerDependencies": {
     "react": "^16.8.6"
