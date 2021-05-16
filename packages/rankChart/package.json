@@ -1,6 +1,6 @@
 {
   "name": "@data-eureka/rank-chart",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
   "author": "MaksimEpifanau <maksim.epifanau@gmail.com>",
   "homepage": "https://github.com/Maverick17user/data-eureka/tree/main/packages/rankChart#readme",
@@ -9,9 +9,9 @@
   "module": "./dist/index.es.js",
   "dependencies": {
     "d3-axis": "^2.1.0",
-    "d3-scale-chromatic": "^2.0.0",
     "d3-format": "^3.0.0",
     "d3-scale": "^3.3.0",
+    "d3-scale-chromatic": "^2.0.0",
     "d3-selection": "^2.0.0",
     "d3-shape": "^2.0.0"
   },
