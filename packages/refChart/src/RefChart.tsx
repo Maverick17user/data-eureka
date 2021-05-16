@@ -8,7 +8,7 @@ import { linkHorizontal } from 'd3-shape';
 export function RefChart({
 	data = [],
 	width = 950,
-	height = 300,
+	height = 300, 
 }: IRefChartProps) {
 
 	const treeBuilder = (data: any) => {

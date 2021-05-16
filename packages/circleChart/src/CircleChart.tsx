@@ -12,7 +12,7 @@ export const SELECTED_BORDER_COLOR = "#000"
 export function CircleChart({
 	data = [],
 	width = 932,
-	height = 930,
+	height = 930, 
 }: ICircleChartProps) {
 
 	const makePack = (data: CircleChartData) => pack()

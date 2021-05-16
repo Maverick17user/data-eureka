@@ -46,7 +46,7 @@ export function AnimatedLineChart({
   if (charts.length > 0) {
     // @ts-ignore
     function halo(text: any) {
-      // @ts-ignore
+      // @ts-ignore 
       text.select(function () { return this.parentNode.insertBefore(this.cloneNode(true), this); })
         .attr("fill", "none")
         .attr("stroke", "white")
