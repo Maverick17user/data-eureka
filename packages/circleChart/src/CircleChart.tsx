@@ -1,11 +1,11 @@
 import React from 'react'
-import useSvgMount from '../../../core/hooks/useSvgMount'
-import ICircleChartProps from '../types/ICircleChartProps'
-import CircleChartData from '../types/CircleChartData'
 import { hierarchy, HierarchyCircularNode, HierarchyNode, pack } from 'd3-hierarchy'
 import { scaleLinear } from 'd3-scale'
 import { interpolateHcl, ZoomView, ZoomInterpolator, interpolateZoom } from 'd3-interpolate'
 import { create, select } from 'd3-selection'
+import useSvgMount from '../../../core/hooks/useSvgMount'
+import ICircleChartProps from '../types/ICircleChartProps'
+import CircleChartData from '../types/CircleChartData'
 
 export const SELECTED_BORDER_COLOR = "#000"
 

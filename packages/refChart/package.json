@@ -16,7 +16,7 @@
     "react": "^16.8.6"
   },
   "files": [
-    "lib"
+    "dist/"
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
