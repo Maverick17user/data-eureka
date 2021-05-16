@@ -8,6 +8,7 @@ import { line } from 'd3-shape';
 import useSvgMount from '../../../core/hooks/useSvgMount'
 import IRankChartProps from '../types/IRankChartProps';
 import { RankEntity, SvgNodeType, SvgNodeType2 } from '../types/RankChartData';
+import 'd3-transition' 
 
 const getRanking = (
     criteriaNames: (string | number)[], 

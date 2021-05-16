@@ -35,6 +35,7 @@ const LOCAL_EXTERNALS = [
   'd3-selection',
   'd3-shape',
   'd3-interpolate',
+  'd3-transition' 
 ];
 
 const common = {
