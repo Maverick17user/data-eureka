@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import RefChart from './src/RefChart';
+import {RefChart} from './src/RefChart';
 import { refChartTestData } from '../../generators/refChartTestData';
 import IRefChartProps from './types/IRefChartProps';
 

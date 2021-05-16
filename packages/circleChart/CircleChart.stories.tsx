@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import CircleChart from './src/CircleChart';
+import {CircleChart} from './src/CircleChart';
 import { circleChart } from '../../generators/circleChart';
 import ICircleChartProps from './types/ICircleChartProps';
 

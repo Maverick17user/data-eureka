@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import AnimatedLineChart from './src/AnimatedLineChart';
+import {AnimatedLineChart} from './src/AnimatedLineChart';
 import { generateData } from '../../generators/animatedLineChartTestData';
 import IAnimatedLineChartProps from './types/IAnimatedLineChartProps';
 
