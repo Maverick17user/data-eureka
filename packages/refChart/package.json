@@ -8,7 +8,9 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "dependencies": {
-    "d3": "^6.3.1"
+    "d3-hierarchy": "^2.0.0",
+    "d3-selection": "^2.0.0",
+    "d3-shape": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.6"

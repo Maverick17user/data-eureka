@@ -27,7 +27,7 @@ const LOCAL_GLOBALS = {
 const LOCAL_EXTERNALS = [
   'react',
   'react-dom',
-  'd3',
+  'd3'
 ];
 
 const common = {
@@ -39,18 +39,13 @@ const common = {
 const mirror = array =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
 
-const formats = ["es", "cjs", "umd"]
+const formats = ["es", "cjs"]
 
 export default formats.map(format => ({
   ...common,
   plugins: [
     resolve({
       extensions,
-      // module: true,
-      // jsnext: true,
-      // main: true,
-      // browser: true,
-      // modulesOnly: true,
     }), 
     commonjs({
       include: /node_modules/,
@@ -86,7 +81,7 @@ export default formats.map(format => ({
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
     format, 
-    sourcemap: true,
+    sourcemap: false,
     name: LERNA_PACKAGE_NAME,
     globals: IS_BROWSER_BUNDLE ? mirror(ALL_MODULES) : LOCAL_GLOBALS,
     amd: {

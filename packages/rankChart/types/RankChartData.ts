@@ -1,10 +1,12 @@
+import { Selection } from "d3-selection"
+
 export type DrawingStyles = 'default' | 'transit' | 'compact'
 
-export type SvgNodeType = d3.Selection<
+export type SvgNodeType = Selection<
     SVGSVGElement, undefined, null, undefined
 > & string
 
-export type SvgNodeType2 = d3.Selection<
+export type SvgNodeType2 = Selection<
     SVGGElement, undefined, null, undefined
 >
 

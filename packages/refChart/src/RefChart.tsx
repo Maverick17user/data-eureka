@@ -1,7 +1,9 @@
 import React from 'react'
-import * as d3 from 'd3'
 import IRefChartProps from '../types/IRefChartProps';
 import useSvgMount from '../../../core/hooks/useSvgMount';
+import { hierarchy, tree } from 'd3-hierarchy';
+import { create } from 'd3-selection';
+import { linkHorizontal } from 'd3-shape';
 
 export function RefChart({
 	data = [],
@@ -10,10 +12,10 @@ export function RefChart({
 }: IRefChartProps) {
 
 	const treeBuilder = (data: any) => {
-		const root: any = d3.hierarchy(data);
+		const root: any = hierarchy(data);
 		root.dx = 10;
 		root.dy = width / (root.height + 1);
-		return d3.tree().nodeSize([root.dx, root.dy])(root);
+		return tree().nodeSize([root.dx, root.dy])(root);
 	}
 
 	const root = treeBuilder(data);
@@ -25,7 +27,7 @@ export function RefChart({
 		if (d.x < x0) x0 = d.x;
 	});
 
-	const svg = d3.create("svg")
+	const svg = create("svg")
 		// @ts-ignore
 		.attr("viewBox", [0, 0, width, x1 - x0 + root.dx * 2])
 		.attr("data-testid", "svg")
@@ -46,7 +48,7 @@ export function RefChart({
 		.data(root.links())
 		.join("path")
 		// @ts-ignore
-		.attr("d", d3.linkHorizontal()
+		.attr("d", linkHorizontal()
 			// @ts-ignore
 			.x(d => d.y)
 			// @ts-ignore

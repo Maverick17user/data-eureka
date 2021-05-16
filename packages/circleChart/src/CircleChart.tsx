@@ -1,9 +1,11 @@
 import React from 'react'
-import * as d3 from 'd3'
 import useSvgMount from '../../../core/hooks/useSvgMount'
 import ICircleChartProps from '../types/ICircleChartProps'
 import CircleChartData from '../types/CircleChartData'
-import { HierarchyNode } from 'd3';
+import { hierarchy, HierarchyCircularNode, HierarchyNode, pack } from 'd3-hierarchy'
+import { scaleLinear } from 'd3-scale'
+import { interpolateHcl, ZoomView, ZoomInterpolator, interpolateZoom } from 'd3-interpolate'
+import { create, select } from 'd3-selection'
 
 export const SELECTED_BORDER_COLOR = "#000"
 
@@ -13,27 +15,27 @@ export function CircleChart({
 	height = 930,
 }: ICircleChartProps) {
 
-	const pack = (data: CircleChartData) => d3.pack()
+	const makePack = (data: CircleChartData) => pack()
 		.size([width, height])
 		.padding(3)
-		(d3.hierarchy(data)
+		(hierarchy(data)
 			.sum((d: any): number => d.value)
 			.sort((
 				a: HierarchyNode<CircleChartData>, 
 				b: HierarchyNode<CircleChartData>): number => b.value! - a.value!))
 
-	const color = d3.scaleLinear()
+	const color = scaleLinear()
 		.domain([0, 5])
 		// @ts-ignore
 		.range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
 		// @ts-ignore
-		.interpolate(d3.interpolateHcl)
+		.interpolate(interpolateHcl)
 
-	const root = pack(data);
+	const root = makePack(data);
 	let focus = root;
-	let view: d3.ZoomView | any;
+	let view: ZoomView | any;
 
-	const svg = d3.create("svg")
+	const svg = create("svg")
 		.attr("data-testid", "svg")
 		.attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
 		.style("display", "block")
@@ -50,10 +52,10 @@ export function CircleChart({
 		.attr("fill", d => d.children ? color(d.depth) : "white")
 		.attr("pointer-events", d => !d.children ? "none" : null)
 		.on("mouseover", function () { 
-			d3.select(this).attr("stroke", SELECTED_BORDER_COLOR); 
+			select(this).attr("stroke", SELECTED_BORDER_COLOR); 
 		})
 		.on("mouseout", function () { 
-			d3.select(this).attr("stroke", null); 
+			select(this).attr("stroke", null); 
 		})
 		.on("click", (event, d) => focus !== d && (zoom(event, d), event.stopPropagation()));
 
@@ -81,13 +83,13 @@ export function CircleChart({
 		node.attr("r", d => d.r * k);
 	}
 
-	function zoom(event: any, d: d3.HierarchyCircularNode<unknown>) {
+	function zoom(event: any, d: HierarchyCircularNode<unknown>) {
 		focus = d;
 
 		const transition = svg.transition()
 			.duration(event.altKey ? 7500 : 750)
 			.tween("zoom", () => {
-				const i: d3.ZoomInterpolator = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2]);
+				const i: ZoomInterpolator = interpolateZoom(view, [focus.x, focus.y, focus.r * 2]);
 				return (t: number) => zoomTo(i(t));
 			});
 

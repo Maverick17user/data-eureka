@@ -1,5 +1,10 @@
 import React from 'react'
-import * as d3 from 'd3'
+import { Axis, axisBottom, axisLeft, axisRight } from 'd3-axis';
+import { format } from 'd3-format';
+import { scaleOrdinal, scalePoint } from 'd3-scale';
+import { schemeTableau10 } from 'd3-scale-chromatic';
+import { create } from 'd3-selection';
+import { line } from 'd3-shape';
 import useSvgMount from '../../../core/hooks/useSvgMount'
 import IRankChartProps from '../types/IRankChartProps';
 import { RankEntity, SvgNodeType, SvgNodeType2 } from '../types/RankChartData';
@@ -71,31 +76,31 @@ export function RankChart({
         return Array.apply(null, { length }).map((_d, i) => i + start);
     }
 
-    const color = d3.scaleOrdinal(d3.schemeTableau10)
+    const color = scaleOrdinal(schemeTableau10)
     // @ts-ignore
         .domain(seq(0, ranking.length))
 
-    const toCurrency = (num: number) => d3.format("$,.2f")(num)
+    const toCurrency = (num: number) => format("$,.2f")(num)
 
-    const y = d3.scalePoint()
+    const y = scalePoint()
         .range([margin.top, height - margin.bottom - padding]);
 
-    const ax = d3.scalePoint()
+    const ax = scalePoint()
     // @ts-ignore
         .domain(criteriaNames)
         .range([margin.left + padding, width - margin.right - padding]);
 
-    const by = d3.scalePoint()
+    const by = scalePoint()
     // @ts-ignore
         .domain(seq(0, ranking.length))
         .range([margin.top, height - margin.bottom - padding])
 
-    const bx = d3.scalePoint()
+    const bx = scalePoint()
     // @ts-ignore
         .domain(seq(0, criteriaNames.length))
         .range([0, width - margin.left - margin.right - padding * 2])
 
-    const strokeWidth = d3.scaleOrdinal()
+    const strokeWidth = scaleOrdinal()
         .domain(["default", "transit", "compact"])
         .range([5, bumpRadius * 2 + 2, 2]);
 
@@ -106,7 +111,7 @@ export function RankChart({
         g: SvgNodeType, 
         x: number, 
         y: number, 
-        axis: d3.Axis<string>, 
+        axis: Axis<string>, 
         domain: boolean
     ) => {
         g.attr("transform", `translate(${x},${y})`)
@@ -118,7 +123,7 @@ export function RankChart({
     }
 
     const compact = drawingStyle === "compact";
-    const svg = d3.create("svg")
+    const svg = create("svg")
         .attr("data-testid", "container")
         .attr("cursor", "default")
         // @ts-ignore
@@ -133,9 +138,10 @@ export function RankChart({
         .attr("stroke-width", 2)
         .attr("stroke-dasharray", "5,5")
         // @ts-ignore
-        .attr("d", d => d3.line()([[bx(d), 0], [bx(d), height - margin.bottom]]));
+        .attr("d", d => line()([[bx(d), 0], [bx(d), height - margin.bottom]]));
 
     const series = svg.selectAll(".series")
+        // @ts-ignore
         .data(chartData)
         .join("g")
         .attr("class", "series")
@@ -156,7 +162,7 @@ export function RankChart({
         .attr("d", (d, i) => {
             if (d.next) {
                 // @ts-ignore
-                return d3.line()([[bx(i), by(d.rank)], [bx(i + 1), by(d.next.rank)]]);
+                return line()([[bx(i), by(d.rank)], [bx(i + 1), by(d.next.rank)]]);
             }
         });
 
@@ -180,11 +186,11 @@ export function RankChart({
         .text(d => d.value.rank + 1);
 
     // @ts-ignore
-    svg.append("g").call(g => drawAxis(g, 0, height - margin.top - margin.bottom + padding, d3.axisBottom(ax), true));
+    svg.append("g").call(g => drawAxis(g, 0, height - margin.top - margin.bottom + padding, axisBottom(ax), true));
     // @ts-ignore
-    const leftY = svg.append("g").call(g => drawAxis(g, margin.left, 0, d3.axisLeft(y.domain(left))));
+    const leftY = svg.append("g").call(g => drawAxis(g, margin.left, 0, axisLeft(y.domain(left))));
     // @ts-ignore
-    const rightY = svg.append("g").call(g => drawAxis(g, width - margin.right, 0, d3.axisRight(y.domain(right))));
+    const rightY = svg.append("g").call(g => drawAxis(g, width - margin.right, 0, axisRight(y.domain(right))));
     // @ts-ignore
     function highlight(_e, d) {
         // @ts-ignore
