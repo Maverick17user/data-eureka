@@ -27,14 +27,20 @@ const LOCAL_GLOBALS = {
 const LOCAL_EXTERNALS = [
   'react',
   'react-dom',
-  'd3'
+  'd3',
+  'd3-axis',
+  'd3-scale-chromatic',
+  'd3-format',
+  'd3-scale',
+  'd3-selection',
+  'd3-shape',
+  'd3-interpolate',
 ];
 
 const common = {
   input: INPUT_FILE,
   external: LOCAL_EXTERNALS,
 }
-
 
 const mirror = array =>
   array.reduce((acc, val) => ({ ...acc, [val]: val }), {});
