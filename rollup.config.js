@@ -88,7 +88,7 @@ export default formats.map(format => ({
   output: {
     file: path.join(OUTPUT_DIR, `index.${format}.js`),
     format, 
-    sourcemap: true,
+    sourcemap: false,
     name: LERNA_PACKAGE_NAME,
     globals: IS_BROWSER_BUNDLE ? mirror(ALL_MODULES) : LOCAL_GLOBALS,
     amd: {
